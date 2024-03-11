@@ -1,0 +1,30 @@
+body {
+	padding: 0;
+	margin: 0;
+  	font-family: 'Montserrat', regular;
+  	color: 000;
+  	font-size: 16px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	padding: 0;
+	margin: 0;
+}
+
+/*Header*/
+.header{
+    height: 53px;
+    margin: 33px 47px;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    height: 53px;
+}
+
+.logo h1{
+    color: #4B0AB6;
+    font-weight: 500;
+    font-size: 20px;
+}
