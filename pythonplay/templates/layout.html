@@ -16,9 +16,18 @@
     <header>
         <div class="header">
             <div class="logo">
-                <img src="{% static 'img\snake.png' %}" alt="icon" width="53px">
-                <h1>PythonPlay</h1>
+                 <a href="{% url 'home' %}">
+                    <img src="{% static 'img\snake.png' %}" alt="PythonPlay" width="53px">
+                    <h1>PythonPlay</h1>
+                 </a>
             </div>
+            <div class="nav">
+                <a href="#" class="study">Мое обучение</a>
+                <a href="#"><img src="{% static 'img\notification.svg' %}" alt="Уведомления"></a>
+                <a href="#"><img src="{% static 'img\profile.svg' %}" alt="Личный кабинет"></a>
+
+            </div>
+
 
 
         </div>
@@ -27,5 +36,14 @@
         {% block content %}
 		{% endblock %}
     </main>
+    <footer>
+        <div class="footer">
+            <p>КОНТАКТНАЯ ИНФОРМАЦИЯ</p>
+            <div class="icons">
+                <a href="#"><img src="{% static 'img\vk.svg' %}" alt="VK"></a>
+                <a href="#"><img src="{% static 'img\inst.svg' %}" alt="INST"></a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

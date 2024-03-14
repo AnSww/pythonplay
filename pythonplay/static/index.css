@@ -3,7 +3,7 @@ body {
 	margin: 0;
   	font-family: 'Montserrat', regular;
   	color: 000;
-  	font-size: 16px;
+  	font-size: 18px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -15,16 +15,58 @@ h1, h2, h3, h4, h5, h6 {
 .header{
     height: 53px;
     margin: 33px 47px;
+    display: flex;
+    justify-content: space-between;
 }
 
-.logo{
+.logo a{
     display: flex;
     align-items: center;
     height: 53px;
+    text-decoration: none;
 }
 
-.logo h1{
+.logo a h1{
     color: #4B0AB6;
     font-weight: 500;
     font-size: 20px;
+}
+
+.nav{
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.nav .study{
+    width: 180px;
+    height: 100%;
+    text-decoration: none;
+    color: #000000;
+    font-weight: 500;
+    background-color: #F8F5FB;
+    border: 1px solid #5E5560;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/*Footer*/
+
+.footer{
+    height: 310px;
+    background-color: #222222;
+    color: #D2D2D2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.footer .icons{
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
