@@ -6,15 +6,15 @@ body {
   	font-size: 18px;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, p, a {
 	padding: 0;
 	margin: 0;
 }
 
 /*Header*/
 .header{
-    height: 53px;
-    margin: 33px 47px;
+    height: 59px;
+    margin: 35px 150px;
     display: flex;
     justify-content: space-between;
 }
@@ -53,10 +53,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*Footer*/
-
-.footer{
-    height: 310px;
-    background-color: #222222;
+footer{
+    height: 309px;
+    background-color: #514C5D;
+    opacity: .7;
     color: #D2D2D2;
     display: flex;
     flex-direction: column;
@@ -64,9 +64,225 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: space-evenly;
 }
 
-.footer .icons{
-    width: 120px;
+.footer{
+    width: 541px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.contact{
+    height: 67px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.footer .icons{
+    height: 25px;
+    width: 84px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/*Home page*/
+.home{
+    padding: 35px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.start{
+    width:83%;
+    height: 587px;
+    background-color: #F8F5FB;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.text_button{
+    width: 400px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.text{
+    height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.text h1{
+    font-size: 35px;
+    font-weight: 800;
+    text-align: left;
+}
+
+.text p{
+    font-size: 20px;
+    font-weight: 400;
+    text-align: left;
+}
+
+.text_button a{
+    width: 176px;
+    height: 50px;
+    text-decoration: none;
+    border-radius: 50px;
+    color: #FFFFFF;
+    background: #3A297C;
+    opacity: .6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home h2{
+    padding-top: 70px;
+    font-size: 35px;
+    font-weight: 600;
+}
+
+.suit{
+    padding-top: 35px;
+    width:83%;
+    height: 327px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.suit div{
+    width: 22%;
+    padding: 67px 3%;
+    background-color: #F8F5FB;
+    border: 6px solid rgba(134, 122, 175, 0.58);
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.suit div h3{
+    font-size: 25px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.suit div p{
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.field{
+    padding-top: 35px;
+    width:83%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+}
+
+.field p{
+    padding: 0 1%;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    height: 70px;
+    font-weight: 600;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.field .s1{
+    background-color: #B6AECF;
+}
+.field .s2{
+    border: 3px solid #5E5560;
+}
+
+.field .s3{
+    background-color: #E6E2EA;
+}
+
+.reviews{
+    padding-top: 35px;
+    width:83%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.review{
+    padding: 70px 3%;
+    width: 40%;
+    background-color: #F9F5FB;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.info{
+    padding-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.info img{
+    padding-right: 20px;
+}
+
+.review p{
+    font-size: 20px;
+    font-weight: 600;
+    color: #646464;
+}
+
+.more_reviews{
+    width: 250px;
+    height: 50px;
+    margin-top: 35px;
+    text-decoration: none;
+    border-radius: 20px;
+    color: #000000;
+    font-weight: 600;
+    background: #B6AECF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.certificate{
+    margin: 70px 0;
+    width:83%;
+    height: 430px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #514C5D;
+    color: #FFFFFF;
+    border-radius: 50px;
+}
+.certificate_text{
+    height: 60%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.certificate_text h3{
+    font-size: 35px;
+    font-weight: 600;
+}
+.certificate_text p{
+    font-size: 20px;
+    font-weight: 400;
 }

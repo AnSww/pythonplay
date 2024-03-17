@@ -3,5 +3,77 @@
 {% block title %}PythonPlay{% endblock %}
 
 {% block content %}
+<div class="home">
+    <div class="start">
+        <div class="text_button">
+            <div class="text">
+                <h1>Python</h1>
+                <p>Изучите основы языка в игровом формате и начните свой путь в мире IT прямо сейчас!</p>
+            </div>
+            <a href="#" >Начать</a>
+        </div>
+        <img src="{% static 'img\man_sofa.png' %}" alt="man">
+    </div>
+    <h2>Курс вам подойдет, если вы...</h2>
+    <div class="suit">
+        <div>
+            <h3>Пытаетесь найти себя</h3>
+            <p>Разобравшись в основах, вы решите для себя ваш путь это или нет</p>
+        </div>
+        <div>
+            <h3>Разработчик на других языках</h3>
+            <p>Вы разберётесь в особенностях Python, сможете сменить специальность</p>
+        </div>
+        <div>
+            <h3>Совсем новичок</h3>
+            <p>Изучите язык с нуля, поймете и закрепите основы на примерах и задачах</p>
+        </div>
+    </div>
+    <h2>В каких областях применяют Python</h2>
+    <div class="field">
+        <p class="s1">Разработка бэкенда сайтов и веб-приложений</p>
+        <p class="s2">Data Science: анализ и визуализация данных</p>
+        <p class="s2">Машинное обучение (нейросети)</p>
+        <p class="s3">Создание игр</p>
+        <p class="s2">Администрирование (DevOps)</p>
+        <p class="s3">Разработка бэкенда мобильных приложений</p>
+        <p class="s1">Разработка десктопных программ</p>
+        <p class="s2">Автоматизированное тестирование</p>
+    </div>
+    <h2>Отзывы участников</h2>
+    <div class="reviews">
+        <div class="review">
+            <div class="info">
+                <img src="{% static 'img\review1.png' %}" alt="review">
+                <div>
+                    <h3>Иванов Иван</h3>
+                    <img src="{% static 'img\mark.png' %}" alt="mark">
+                </div>
+            </div>
+            <p>Lorem ipsum dolor sit amet consectetur. Consectetur justo dui eu urna urna. Ultricies urna lacus viverra id orci. Molestie sit facilisi gravida consectetur ultrices magna sem. Lacus sed vulputate cursus tellus.</p>
+        </div>
+        <div class="review">
+            <div class="info">
+                <img src="{% static 'img\review2.png' %}" alt="review">
+                <div>
+                    <h3>Кириллов Кирилл</h3>
+                    <img src="{% static 'img\mark.png' %}" alt="mark">
+                </div>
+            </div>
+            <p>Lorem ipsum dolor sit amet consectetur. Consectetur justo dui eu urna urna. Ultricies urna lacus viverra id orci. Molestie sit facilisi gravida consectetur ultrices magna sem. Lacus sed vulputate cursus tellus.</p>
+        </div>
+    </div>
+    <a href="#" class="more_reviews">Больше отзывов</a>
+    <div class="certificate">
+        <div class="certificate_text">
+            <h3>Подтверждение навыков</h3>
+            <p>В случае успешного завершения курса вы получите сертификат, подтверждающий ваше прохождение и изучение по основам Python</p>
+            <p>Сертификат может вам пригодиться при приеме на работу и так далее</p>
+        </div>
+        <div><img src="{% static 'img\certificate.png' %}" alt="certificate"></div>
+    </div>
 
+
+
+</div>
 {% endblock %}

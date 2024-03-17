@@ -17,7 +17,7 @@
         <div class="header">
             <div class="logo">
                  <a href="{% url 'home' %}">
-                    <img src="{% static 'img\snake.png' %}" alt="PythonPlay" width="53px">
+                    <img src="{% static 'img\snake.png' %}" alt="PythonPlay" width="59px">
                     <h1>PythonPlay</h1>
                  </a>
             </div>
@@ -25,11 +25,7 @@
                 <a href="#" class="study">Мое обучение</a>
                 <a href="#"><img src="{% static 'img\notification.svg' %}" alt="Уведомления"></a>
                 <a href="#"><img src="{% static 'img\profile.svg' %}" alt="Личный кабинет"></a>
-
             </div>
-
-
-
         </div>
     </header>
     <main>
@@ -37,13 +33,25 @@
 		{% endblock %}
     </main>
     <footer>
+        <img src="{% static 'img\line.svg' %}" alt="line">
         <div class="footer">
-            <p>КОНТАКТНАЯ ИНФОРМАЦИЯ</p>
-            <div class="icons">
-                <a href="#"><img src="{% static 'img\vk.svg' %}" alt="VK"></a>
-                <a href="#"><img src="{% static 'img\inst.svg' %}" alt="INST"></a>
+            <div class="contact">
+                <p>ПОЧТА</p>
+                <p style="color: #FFFFFF">email@tpu.ru</p>
+            </div>
+            <div class="contact">
+                <p>СОЦ-СЕТИ</p>
+                <div class="icons">
+                    <a href="#"><img src="{% static 'img\vk.svg' %}" alt="VK" width="25px"></a>
+                    <a href="#"><img src="{% static 'img\inst.svg' %}" alt="INST" width="25px"></a>
+                </div>
+            </div>
+            <div class="contact">
+                <p>ТЕЛЕФОН</p>
+                <p style="color: #FFFFFF">0000-0000-0</p>
             </div>
         </div>
+        <img src="{% static 'img\line.svg' %}" alt="line">
     </footer>
 </body>
 </html>
