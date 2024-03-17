@@ -9,10 +9,33 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../static/index.css">
+    <link rel="stylesheet" href="../static/letsgo.css">
     <title>{% block title %}{% endblock %}</title>
+
+
+
 </head>
 <body>
-
+<header>
+        <div class="header">
+            <div class="logo">
+                 <a href="{% url 'home' %}">
+                    <img src="{% static 'img\snake.png' %}" alt="PythonPlay" width="53px">
+                    <h1>PythonPlay</h1>
+                 </a>
+            </div>
+            <div class="nav">
+                <a href="#"><img src="{% static 'img\notification.svg' %}" alt="Уведомления"></a>
+                <a href="#"><img src="{% static 'img\profile.svg' %}" alt="Личный кабинет"></a>
+            </div>
+        </div>
+</header>
+<div class="background"></div>
+<div class="left">
+    <img id = "coder" src="{% static 'img\coder.gif' %}" alt="bendy-man-developer" >
+</div>
+<div class="rignt">
+    <h1>Давайте начнем</h1>
+</div>
 </body>
 </html>
