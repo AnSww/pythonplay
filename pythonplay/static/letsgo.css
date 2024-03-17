@@ -46,43 +46,63 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: space-around;
 }
 
-.nav .study{
-    width: 180px;
-    height: 100%;
-    text-decoration: none;
-    color: #000000;
-    font-weight: 500;
-    background-color: #F8F5FB;
-    border: 1px solid #5E5560;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-
-
 .left {
-float: left;
+    float: left;
     width: 57%;
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-.right {
-    float: left;
-    width: 43%;
-    text-align: center;
-}
-.right h1 {
-    margin-top: 0;
-    z-index: -1
-}
 
+}
 #coder {
     position: fixed;
-    bottom: -12%;
-    max-width: 40%;
-    z-index: 2;
+    bottom: -15%;
+    max-width: 57%; /* Ширина .left контейнера */
 }
+
+.right {
+    float: right;
+    width: 43%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; /* Добавляем относительное позиционирование */
+}
+
+#right_h1 {
+    font-weight: 600;
+    position: absolute; /* Изменяем на абсолютное позиционирование */
+    margin-top: 25%;
+}
+
+.bnt-container {
+    position: absolute; /* Изменяем на абсолютное позиционирование */
+    margin-top: 50%; /* Перемещаем в середину блока .right */
+    transform: translateY(-50%); /* Для точного центрирования по вертикали */
+    display: flex;
+    align-items: center;
+}
+
+.bnt {
+    margin: 25px; /* Уменьшаем отступы между кнопками */
+    font-family: 'Montserrat', regular;
+    font-size: 18px;
+    color: white;
+    width: 155px;
+    height: 49px;
+    background-color: #4B0AB6;
+    border-color: #4B0AB6;
+}
+.bnt:hover {
+    background-color: white;
+    color: #4B0AB6;
+}
+
+h1 {
+    font-weight: 500;
+    margin-top: 10%;
+    text-align: center;
+  }
 

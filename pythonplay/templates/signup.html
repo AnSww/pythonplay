@@ -1,10 +1,46 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/letsgo.css">
+    <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
+<header>
+        <div class="header">
+            <div class="logo">
+                 <a href="{% url 'home' %}">
+                    <img src="{% static 'img\snake.png' %}" alt="PythonPlay" width="53px">
+                    <h1>PythonPlay</h1>
+                 </a>
+            </div>
+            <div class="nav">
+                <a href="#"><img src="{% static 'img\notification.svg' %}" alt="Уведомления"></a>
+                <a href="#"><img src="{% static 'img\profile.svg' %}" alt="Личный кабинет"></a>
+            </div>
+        </div>
+</header>
+
+<h2>Регистрация</h2>
+<form method="post">
+  {% csrf_token %}
+  <label for="{{ form.username.id_for_label }}">Имя:</label>
+  {{ form.username }}
+  <label for="{{ form.password1.id_for_label }}">Пароль:</label>
+  {{ form.password1 }}
+  <label for="{{ form.password2.id_for_label }}">Подтвердите пароль:</label>
+  {{ form.password2 }}
+  <button type="submit">Зарегистрировать</button>
+</form>
+
+
 
 </body>
 </html>
