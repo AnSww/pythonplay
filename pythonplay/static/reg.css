@@ -1,0 +1,69 @@
+body {
+	padding: 0;
+	margin: 0;
+  	font-family: 'Montserrat', regular;
+  	font-size: 18px;
+}
+form {
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 25px;
+}
+input{
+    width: 505px;
+    height: 50px;
+    border: 3px solid #B6AECF;
+    font-family: 'Montserrat', regular;
+    font-size: 18px;
+    padding-left: 10px;
+}
+
+h1 {
+    font-weight: 500;
+    margin-top: 10%;
+    text-align: center;
+  }
+.bnt {
+    margin: 25px; /* Уменьшаем отступы между кнопками */
+    font-family: 'Montserrat', regular;
+    font-size: 18px;
+    color: white;
+    width: 505px;
+    height: 50px;
+    background-color: #4B0AB6;
+    border-color: #4B0AB6;
+}
+.bnt:hover {
+    background-color: white;
+    color: #4B0AB6;
+}
+/*Header*/
+.header{
+    height: 53px;
+    margin: 33px 47px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo a{
+    display: flex;
+    align-items: center;
+    height: 53px;
+    text-decoration: none;
+}
+
+.logo a h1{
+    color: #4B0AB6;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.nav{
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}

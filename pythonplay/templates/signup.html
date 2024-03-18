@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../static/letsgo.css">
+    <link rel="stylesheet" href="{% static 'reg.css' %}">
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
@@ -28,17 +28,23 @@
         </div>
 </header>
 
-<h2>Регистрация</h2>
-<form method="post">
-  {% csrf_token %}
-  <label for="{{ form.username.id_for_label }}">Имя:</label>
-  {{ form.username }}
-  <label for="{{ form.password1.id_for_label }}">Пароль:</label>
-  {{ form.password1 }}
-  <label for="{{ form.password2.id_for_label }}">Подтвердите пароль:</label>
-  {{ form.password2 }}
-  <button type="submit">Зарегистрировать</button>
-</form>
+<h1>Регистрация</h1>
+<div class="container">
+  <form method="post">
+    {% csrf_token %}
+    <label class="formlog" for="{{ form.username.id_for_label }}">
+      <input type="text" placeholder="Логин" name="username" id="{{ form.username.id_for_label }}">
+    </label>
+    <label class="formlog" for="{{ form.password1.id_for_label }}">
+      <input type="password" placeholder="Пароль" name="password1" id="{{ form.password1.id_for_label }}">
+    </label>
+    <label class="formlog" for="{{ form.password2.id_for_label }}">
+      <input type="password" placeholder="Подтвердите пароль" name="password2" id="{{ form.password2.id_for_label }}">
+    </label>
+    <button class="bnt" type="submit">Продолжить</button>
+  </form>
+</div>
+
 
 
 
