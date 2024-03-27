@@ -28,9 +28,44 @@
         </div>
 </header>
 <div class="background"></div>
+<style>
+     #canvas {
+        margin-bottom: 10px;
+        margin-left: 0;
+    }
+
+    #text-container {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        font-size: 30px;
+        margin-bottom: 10px;
+        text-align: left; /* Align text to the left */
+    }
+
+</style>
 <div class="left">
-    <img id = "coder" src="{% static 'img\coder.gif' %}" alt="bendy-man-developer" >
+    <canvas id="canvas" width="300" height="100"></canvas>
+    <div id="text-container"></div>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const textContainer = document.getElementById('text-container');
+        let text = 'print ("Kurwa, ежик!")';
+        let p = 0;
+
+        function printSmbl() {
+            textContainer.textContent += text[p];
+            p++;
+            if (p < text.length) {
+                setTimeout(printSmbl, Math.round(Math.random() * 100));
+            }
+        }
+
+        setTimeout(printSmbl, 100);
+    </script>
+    <img id="coder" src="{% static 'img\coder.gif' %}" alt="bendy-man-developer">
 </div>
+
 <div class="right">
     <h1 id="right_h1">Давайте начнем!</h1>
     <div class="bnt-container">
