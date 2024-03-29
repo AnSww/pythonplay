@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/roadmap.css">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <div class="logo">
+                 <a href="{% url 'home' %}">
+                    <img src="{% static 'img\snake.png' %}" alt="PythonPlay" width="59px">
+                    <h1>PythonPlay</h1>
+                 </a>
+            </div>
+            <div class="nav">
+                <a href="{% url 'letsgo' %}"><img src="{% static 'img\profile.svg' %}" alt="Личный кабинет"></a>
+                <a href="#"><img src="{% static 'img\notification.svg' %}" alt="Уведомления"></a>
+            </div>
+        </div>
+    </header>
+    <main>
+
+        <h1>Как проходит ваше обучение?</h1>
+        <form action="{% url 'snake' %}" target="_self">
+        <button class="bnt">Играть</button>
+        </form>
+
+        <div class="roadmap">
+            <div class="road">
+                <svg width="753" height="1195" viewBox="0 0 753 1195" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M120.555 3H611.403C641.55 3 670.165 16.2821 689.625 39.3072V39.3072C720.767 76.1547 721.971 129.739 692.515 167.948L690.759 170.226C670.694 196.254 639.689 211.5 606.825 211.5H122.125C77.1464 211.5 38.2754 242.991 28.8823 286.978V286.978C25.9975 300.487 26.0899 314.477 29.1589 327.946V327.946C39.0108 371.182 77.4589 401.855 121.803 401.855H629.96C659.09 401.855 686.672 414.972 705.055 437.568V437.568C733.202 472.165 734.07 521.515 707.156 557.081L705.868 558.783C687.055 583.644 657.68 598.252 626.503 598.252H118.859C92.5351 598.252 67.4509 609.436 49.8567 629.016V629.016C20.7414 661.417 18.0924 709.713 43.4891 745.104L47.3057 750.423C66.2599 776.836 96.7792 792.5 129.29 792.5H608.985C640.457 792.5 670.118 807.22 689.151 832.285L694.391 839.186C722.146 875.737 718.287 927.248 685.395 959.256V959.256C668.432 975.763 645.696 985 622.026 985H175.596C141.07 985 108.684 1001.73 88.7037 1029.89L86.2421 1033.36C60.5575 1069.55 61.5687 1118.29 88.7326 1153.39V1153.39C107.824 1178.06 137.261 1192.5 168.454 1192.5H516" stroke="#4A1757" stroke-width="5" stroke-dasharray="20 20"/>
+                <circle cx="715.5" cy="103.5" r="9.5" fill="#4A1757"/>
+                <circle cx="27.5" cy="306.5" r="9.5" fill="#4A1757"/>
+                <circle cx="728.5" cy="496.5" r="9.5" fill="#4A1757"/>
+                <circle cx="713.5" cy="900.5" r="9.5" fill="#4A1757"/>
+                <circle cx="87.5" cy="1032.5" r="9.5" fill="#4A1757"/>
+                </svg>
+            </div>
+        </div>
+
+
+        <form action="#" target="_self">
+        <button class="bnt">Завершить</button>
+        </form>
+    </main>
+    <footer>
+        <img src="{% static 'img\line.svg' %}" alt="line">
+        <div class="footer">
+            <div class="contact">
+                <p>ПОЧТА</p>
+                <p style="color: #FFFFFF">email@tpu.ru</p>
+            </div>
+            <div class="contact">
+                <p>СОЦ-СЕТИ</p>
+                <div class="icons">
+                    <a href="#"><img src="{% static 'img\vk.svg' %}" alt="VK" width="25px"></a>
+                    <a href="#"><img src="{% static 'img\inst.svg' %}" alt="INST" width="25px"></a>
+                </div>
+            </div>
+            <div class="contact">
+                <p>ТЕЛЕФОН</p>
+                <p style="color: #FFFFFF">0000-0000-0</p>
+            </div>
+        </div>
+        <img src="{% static 'img\line.svg' %}" alt="line">
+    </footer>
+</body>
+</html>

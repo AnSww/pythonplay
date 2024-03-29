@@ -13,3 +13,9 @@ class LetsgoPageView(TemplateView):
 
 class LoginPageView(TemplateView):
     template_name = 'login.html'
+
+class RoadmapPageView(TemplateView):
+    template_name = 'roadmap.html'
+
+class Snake(TemplateView):
+    template_name = 'snake.html'
