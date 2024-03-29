@@ -10,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'letsgo.css' %}">
+
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
@@ -27,22 +28,7 @@
             </div>
         </div>
 </header>
-<style>
-     #canvas {border: none;
-        margin-bottom: 10px;
-        margin-left: 0;
-    }
 
-    #text-container {
-
-        font-family: "JetBrains Mono Medium",serif;
-        font-weight: 500;
-        font-size: 30px;
-        margin: 25% 20px 20px 47px;
-        text-align: left; /* Align text to the left */
-    }
-
-</style>
 <div class="background">
     <canvas id="canvas" width="300" height="100"></canvas>
     <div id="text-container"></div>

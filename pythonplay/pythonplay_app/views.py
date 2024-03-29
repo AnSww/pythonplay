@@ -17,5 +17,3 @@ class LoginPageView(TemplateView):
 class RoadmapPageView(TemplateView):
     template_name = 'roadmap.html'
 
-class Snake(TemplateView):
-    template_name = 'snake.html'

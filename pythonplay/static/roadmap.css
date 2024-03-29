@@ -90,13 +90,15 @@ h1{
 }
 .bnt {
     margin: auto;
-    margin-top: 25px;
+    margin-top: 2%;
+    margin-bottom: 2%;
     display: block;
     font-family: 'Montserrat', regular;
-    font-size: 18px;
+    font-size: 130%;
     color: white;
-    width: 176px;
-    height: 50px;
+    width: 12%;
+    padding: 1%;
+    height: auto;
     background-color: #644C8B;
     border-color: #644C8B;
     border-radius: 50px;
@@ -109,9 +111,36 @@ h1{
 
 .roadmap {
     display: flex;
-    justify-content: center; /* Центрирование по горизонтали */
+    justify-content: center; /* Центрируем содержимое по горизонтали */
 }
 
+.road {
+    width: 55%; /* Ширина SVG - 60% от ширины экрана */
+    max-width: 1280px;
+    margin: 0 auto; /* Центрируем SVG */
+}
 
+.square {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: #B6AECF; /* Цвет квадрата */
+    transform: translateY(-15%); /* Смещение квадрата вверх на половину его собственной высоты */
+}
+.dot {
+    fill: #A781DA;
+}
 
+.dot:hover{
+    fill: #B6AECF;
+}
 
+.number{
+    fill: #4A1757;
+    font-family: 'Montserrat';
+    font-weight: bold ;
+    font-size: 20px;
+    text-anchor: middle;
+    dominant-baseline: central;
+    pointer-events: none;
+}
