@@ -27,23 +27,23 @@
             </div>
         </div>
 </header>
-<div class="background"></div>
 <style>
-     #canvas {
+     #canvas {border: none;
         margin-bottom: 10px;
         margin-left: 0;
     }
 
     #text-container {
-        font-family: 'Montserrat', sans-serif;
+
+        font-family: "JetBrains Mono Medium",serif;
         font-weight: 500;
         font-size: 30px;
-        margin-bottom: 10px;
+        margin: 25% 20px 20px 47px;
         text-align: left; /* Align text to the left */
     }
 
 </style>
-<div class="left">
+<div class="background">
     <canvas id="canvas" width="300" height="100"></canvas>
     <div id="text-container"></div>
     <script>
@@ -63,6 +63,10 @@
 
         setTimeout(printSmbl, 100);
     </script>
+</div>
+
+<div class="left">
+
     <img id="coder" src="{% static 'img\coder.gif' %}" alt="bendy-man-developer">
 </div>
 

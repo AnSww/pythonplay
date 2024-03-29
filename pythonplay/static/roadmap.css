@@ -107,7 +107,7 @@ h1{
     color: #4B0AB6;
 }
 
-.roadmap{
+.roadmap {
     display: flex;
     justify-content: center; /* Центрирование по горизонтали */
 }
