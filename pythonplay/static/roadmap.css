@@ -120,23 +120,18 @@ h1{
     margin: 0 auto; /* Центрируем SVG */
 }
 
-.square {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    background-color: #B6AECF; /* Цвет квадрата */
-    transform: translateY(-15%); /* Смещение квадрата вверх на половину его собственной высоты */
+@media(min-width: 2200px){
+    #left_snake{
+        width: 636px;
+        height: 222px;
+    }
 }
+
 .dot {
-    fill: #A781DA;
-}
+    position: relative;
 
-.dot:hover{
-    fill: #B6AECF;
 }
-
 .number{
-    fill: #4A1757;
     font-family: 'Montserrat';
     font-weight: bold ;
     font-size: 20px;
@@ -144,3 +139,59 @@ h1{
     dominant-baseline: central;
     pointer-events: none;
 }
+@media (hover: hover) {
+  .dot:hover {
+    fill: #2b0d33; /* Change fill color of dot */
+    r: 30; /* Change radius of dot */
+  }
+
+  .dot:hover + .number {
+    fill: #ffffff; /* Change fill color of adjacent .number element */
+  }
+}
+
+@keyframes scaleCircle {
+    0% {
+        rx: 9.1171;
+
+    }
+    50% {
+        rx: 1;
+
+    }
+    100% {
+        rx: 9.1171;
+
+    }
+}
+
+.ellipse-animation {
+    animation: scaleCircle 2s ease-in-out infinite alternate;
+}
+
+#yzyk {
+    animation: rotateLanguage 3s ease-in-out infinite alternate;
+}
+
+@keyframes rotateLanguage {
+    0% {
+        transform: rotate(0deg);
+        transform: translateY(0);
+        transform: translateX(0);
+    }
+    50% {
+        transform: rotate(5deg);
+        transform: translateX(-20px);
+        transform: translateY(10px);
+    }
+    100% {
+        transform: rotate(-5deg);
+        transform: translateY(-40px);
+
+    }
+}
+
+
+
+
+
