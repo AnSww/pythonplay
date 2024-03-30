@@ -120,12 +120,25 @@ h1{
     margin: 0 auto; /* Центрируем SVG */
 }
 
-@media(min-width: 2200px){
-    #left_snake{
-        width: 636px;
-        height: 222px;
-    }
+
+
+.square {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: #B6AECF; /* Цвет квадрата */
+
 }
+
+@media(min-width: 2200px){
+#left_snake{
+    width: 636px;
+    height: 222px;
+}
+}
+
+
+
 
 .dot {
     position: relative;
@@ -172,6 +185,8 @@ h1{
 #yzyk {
     animation: rotateLanguage 3s ease-in-out infinite alternate;
 }
+
+
 
 @keyframes rotateLanguage {
     0% {
