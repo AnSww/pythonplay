@@ -17,3 +17,19 @@ class LoginPageView(TemplateView):
 class RoadmapPageView(TemplateView):
     template_name = 'roadmap.html'
 
+
+def create_level_view(level_number):
+    class_name = f"Level_{level_number}_View"
+    template_name = f"level{level_number}.html"
+
+    # Создание класса динамически с помощью type()
+    dynamic_class = type(
+        class_name,
+        (TemplateView,),
+        {'template_name': template_name}
+    )
+
+    return dynamic_class
+
+Level_0_View = create_level_view(0)
+Level_1_View = create_level_view(1)
