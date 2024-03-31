@@ -1,11 +1,14 @@
 document.addEventListener('DOMContentLoaded', function () {
-const svg = document.querySelector('svg.road_vector');
-const path = svg.querySelector('path#motionPath');
+    const svg = document.querySelector('svg.road_vector');
+    const path = svg.querySelector('path#motionPath');
     const length = path.getTotalLength(); // Получаем длину пути
     const numPoints = 22; // Желаемое количество точек
     const spacing = length / (numPoints + 1); // Рассчитываем расстояние между точками
 
-    let n=5;
+    let n= 5;
+
+
+
                 // Создаем шарик по вектору
     const movingObject = document.createElementNS("http://www.w3.org/2000/svg", "circle");
     movingObject.setAttribute("id", "movingObject");
@@ -68,13 +71,13 @@ if (i !== 0) {
     // Устанавливаем длину пути для анимации до нужной отметки уровня
     const pathLength = spacing * n;
     if (n<=7){
-        duration = 1000;
+        duration = 500;
     }
     else if(n<=15){
-        duration = 1250;
+        duration = 750;
     }
     else{
-        duration = 1500;
+        duration = 1000;
     }
     let startTime;
 
