@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/profile.css">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <div class="logo">
+                 <a href="{% url 'home' %}">
+                    <img src="{% static 'img\snake.png' %}" alt="PythonPlay" width="59px">
+                    <h1>PythonPlay</h1>
+                 </a>
+            </div>
+            <div class="nav">
+                <a href="{% url 'roadmap' %}" class="study">Мое обучение</a>
+                <a href="#"><img src="{% static 'img\notification.svg' %}" alt="Уведомления"></a>
+                <a href="{% url 'letsgo' %}"><img src="{% static 'img\profile.svg' %}" alt="Личный кабинет"></a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="person_info">
+            <div class="person">
+                <img src="{% static 'img\person_photo.png' %}" alt="person">
+                <div class="person_about">
+                    <p>Петрова Анна</p>
+                    <div>
+                        <p>7 уровень</p>
+                        <img src="{% static 'img\score.svg' %}" alt="score">
+                        <p> x 105</p>
+                    </div>
+                </div>
+            </div>
+            <a class="settings" href="#"><img src="{% static 'img\settings.svg' %}" alt="settings">Изменить профиль</a>
+        </div>
+        <div class="progress">
+            <h1>Вы остановились здесь. Продолжим?</h1>
+            <div class="line">
+                <div class="certificate">
+                    <div class="text">
+                        <img src="{% static 'img\text.svg' %}" >
+                        <p>текст, 1 мин</p>
+                    </div>
+                    <div class="certificate_info">
+                        <h2>Как получить сертификат</h2>
+                        <p>Узнайте, как получить сертификат после прохождения игры</p>
+                        <a href="#" class="btn">Продолжить  >></a>
+                    </div>
+                </div>
+                <div class="achievement">
+                    <h2>Достижения</h2>
+                    <p>Соберите все достижения и освойте основы Python с нуля!</p>
+                    <a href="#" class="btn">Продолжить  >></a>
+                </div>
+            </div>
+
+            <div class="levels">
+                <img src="{% static 'img\1level.svg' %}" width="52px">
+                <div>
+                    <h2>Вы остановились на 1 уровне. Как ваш настрой?</h2>
+                    <p>Ввод и вывод</p>
+                </div>
+                <a href="#" class="btn">Продолжить  >></a>
+            </div>
+        </div>
+        <div class="snake">
+            <svg width="330" height="219" viewBox="0 0 330 219" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M84.6616 126.595V126.595C74.6393 115.75 57.6763 115.22 46.9959 125.417L45.762 126.595V126.595C35.5143 135.667 19.4353 132.723 12.9404 120.676V120.676M12.9404 120.676L5.03895 97M12.9404 120.676L1.99991 132.514" stroke="#7B2997" stroke-width="4"/>
+                <path d="M330 0H171.074C115.846 0 71.0743 44.7715 71.0743 100V119C71.0743 174.228 115.846 219 171.074 219H330V0Z" fill="#B89DC1"/>
+                <ellipse class="ellipse-animation" cx="14" cy="14" rx="14" ry="14" transform="matrix(-1 0 0 1 178.88 37)" fill="#3C2B4C"/>
+                <ellipse class="ellipse-animation" cx="14" cy="14" rx="14" ry="14" transform="matrix(-1 0 0 1 180 154)" fill="#3C2B4C"/>
+            </svg>
+        </div>
+    </main>
+    <footer>
+        <img src="{% static 'img\line.svg' %}" alt="line">
+        <div class="footer">
+            <div class="contact">
+                <p>ПОЧТА</p>
+                <p style="color: #FFFFFF">email@tpu.ru</p>
+            </div>
+            <div class="contact">
+                <p>СОЦ-СЕТИ</p>
+                <div class="icons">
+                    <a href="#"><img src="{% static 'img\vk.svg' %}" alt="VK" width="25px"></a>
+                    <a href="#"><img src="{% static 'img\inst.svg' %}" alt="INST" width="25px"></a>
+                </div>
+            </div>
+            <div class="contact">
+                <p>ТЕЛЕФОН</p>
+                <p style="color: #FFFFFF">0000-0000-0</p>
+            </div>
+        </div>
+        <img src="{% static 'img\line.svg' %}" alt="line">
+    </footer>
+</body>
+</html>
