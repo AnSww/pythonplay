@@ -23,7 +23,7 @@ class Taskcompletions(models.Model):
     taskid = models.ForeignKey('Tasks', models.DO_NOTHING, db_column='TaskID')  # Field name made lowercase.
 
     def __str__(self):
-        return '%s%s' (self.userid, self.taskid)
+        return '%s%s' %(self.userid, self.taskid)
 
 
 class Tasks(models.Model):
