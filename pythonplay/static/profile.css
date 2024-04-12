@@ -128,6 +128,7 @@ footer{
     height: 50px;
     text-decoration: none;
     color: #000000;
+    font-family: 'Montserrat';
     font-weight: 500;
     font-size: 16px;
     background-color: #F8F5FB;
@@ -270,4 +271,152 @@ footer{
 }
 .ellipse-animation {
     animation: scaleCircle 2s ease-in-out infinite alternate;
+}
+
+
+/*Popup*/
+
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 99998;
+    background-color: rgba(0, 0, 0, .3);
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .4s, visibility .4s;
+}
+
+.modal__box {
+    position: relative;
+    max-width: 685px;
+    border-radius: 25px;
+    z-index: 1;
+    background-color: white;
+    box-shadow: 0px 0px 17px -7px rgba(34, 60, 80, 0.2);
+    transform: scale(0);
+    transition: transform .8s;
+
+}
+
+.top{
+    width:100%;
+    background-color: #463A4E;
+    height: 60px;
+    border-radius: 25px 25px 0px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.top p{
+    color: #FFFFFF;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.modal__close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.modal__close-btn svg path {
+    transition: fill .4s;
+}
+
+.modal__close-btn:hover svg path {
+    fill: #BEB7C1;
+}
+
+
+.setting_forms{
+    margin: 35px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.setting_forms div p{
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 25px;
+}
+
+.setting_forms div input{
+    width: 223px;
+    height: 40px;
+    border: 1px solid #B6AECF;
+    padding: 0;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+
+.setting_forms div input::placeholder{
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.label_img {
+    width: 95px;
+    height: 95px;
+    border-radius: 47px;
+    cursor: pointer;
+    background-color: #BEB7C1;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 500;
+    position: absolute;
+    top: 144px;
+    right: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.input_img {
+  width: 0.1px;
+  height: 0.1px;
+  margin: 0;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.save{
+    width: 170px;
+    height: 50px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #FFFFFF;
+    font-family: 'Montserrat';
+    font-weight: 500;
+    font-size: 20px;
+    background-color: #463A4E;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+    cursor: pointer;
+}
+.modal.open {
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal.open .modal__box {
+    transform: scale(1);
 }
