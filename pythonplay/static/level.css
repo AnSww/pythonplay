@@ -12,6 +12,33 @@ h1, h2, h3, h4, h5, h6, p, a {
 }
 
 /*Header*/
+#head {
+    margin: 0;
+    height: 85px;
+    width: 100%;
+    background-color: #463A4E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+dialog{
+    border: none;
+    padding: 0;
+    width: 430px;
+    height: 500px;
+}
+dialog h6{
+    font-size: 25px;
+    font-weight: 200;
+    color: white;
+}
+#notification-dialog {
+    width: 430px;
+    height: 500px;
+    position: absolute;
+    z-index: 9999; /* Убедитесь, что z-index диалога выше, чем у других элементов, чтобы он отображался поверх них */
+}
+
 .header{
     height: 59px;
     margin: 35px 150px;
@@ -158,6 +185,10 @@ footer{
     text-align: justify;
 }
 
+.level_info p{
+    margin-bottom: 20px;
+}
+
 #meme{
     float:left; /* Выравниваем по левому краю */
     margin: 2% 2% 2% 0;
@@ -242,4 +273,18 @@ footer{
     position: absolute; /* Установка абсолютного позиционирования для изображения лисы */
     bottom: -7%; /* Расположение лисы внизу относительно элемента main */
     left: 0; /* Расположение лисы справа */
+}
+
+#code1{
+    margin: 0 auto;
+    width: 70%;
+    height: 200px;
+    background-color: #6F6481;
+}
+
+#code2{
+    width: 70%;
+    height: 700px;
+    background-color: #6F6481;
+    margin: 0 auto;
 }

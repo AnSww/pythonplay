@@ -34,17 +34,24 @@
                     </div>
                     <img src="{% static 'img\person_photo.png' %}" alt="person" width="50px" style="padding-left: 10px" >
                 </div>
-                <a href="#"><img src="{% static 'img\notification.svg' %}" alt="Уведомления"></a>
+                <a href="#" id="open"><img src="{% static 'img/notification.svg' %}" alt="Уведомления"></a>
+                <dialog id="notification-dialog">
+                    <div id="head">
+                        <h6>Уведомления</h6>
+                    </div>
+                    <p>
+                        <button id="close">Закрыть окно</button>
+                    </p>
+                </dialog>
+
             </div>
         </div>
     </header>
-
-
     <main id="main_content">
         <div id="backgroung">
             <img src="{% static 'img\line2.svg' %}" alt="line">
-            <h1>Уровень 0</h1>
-            <h2>Знакомство и введение</h2>
+            <h1>Уровень 1</h1>
+            <h2>Ввод и вывод</h2>
             <img src="{% static 'img\line2.svg' %}" alt="line">
         </div>
         <svg id="right_snake" width="244" height="219" viewBox="0 0 244 219" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -53,24 +60,25 @@
             <ellipse cx="14.56" cy="14" rx="14.56" ry="14" transform="matrix(-1 0 0 1 178.88 37)" fill="#3C2B4C" class="ellipse-animation"/>
             <ellipse cx="14.56" cy="14" rx="14.56" ry="14" transform="matrix(-1 0 0 1 180 154)" fill="#3C2B4C" class="ellipse-animation"/>
         </svg>
-        <img id="fox" src="{% static 'img\fox.svg' %}" alt="fox">
         <div class="level_info">
             <p>
-                Привет, игрок! Добро пожаловать в удивительный мир леса, где среди высокой травы и игры лучей света скрывается тайный уголок, дом забавной змейки по имени Йорик (бедный...).
-                <strong>Йора — это настоящая героиня, любознательная и дружелюбная</strong>, с множеством друзей среди других обитателей леса. Но сегодня особый день - день рождения её лучшего друга, молодого лисёнка по имени Лео. И как раз в этот особый день <strong>Зара решила пригласить тебя в своё увлекательное приключение!</strong> Вместе с ней ты будешь шаг за шагом идти к цели - <strong>придумать подарок для Лео и подарить его ему в течение всех уровней.</strong>
+                <strong>Функция input()</strong> - это инструмент, который позволяет вашей программе взаимодействовать с пользователем. Когда программа доходит до строки с <strong>input()</strong>, она приостанавливает свое выполнение и <strong>ожидает</strong>, пока пользователь введет данные с клавиатуры. После этого введенная пользователем строка <strong>возвращается</strong> в качестве результата выполнения функции <strong>input()</strong>.
             </p>
-            <a><img id="meme" src="{% static 'img\meme0.png' %}" alt="meme" >
-                <p class="level_text">
-                    А ещё, в процессе игры, ты будешь <strong>изучать Python</strong> - высокоуровневый язык программирования, который был разработан <strong>Гвидо ван Россумом</strong> и впервые выпущен в 1991 году. Ван Россум хотел создать язык, который был бы <strong>простым в изучении и читаемым, а также обладал бы мощными возможностями.</strong> Имя языка вдохновлено популярным британским комедийным шоу "<strong>Летающий цирк Монти Пайтона</strong>".
-                </p>
-                <p class="level_text" style="text-align: right;">
-                    <em>Удачи в этом увлекательном путешествии!</em>
-                </p>
-            </a>
+            <p>Пример использования:</p>
         </div>
-                    <form action="{% url 'level1' %}" target="_self">
-                <button class="bnt">Дальше</button>
-            </form>
+
+        <div id = "code1"></div>
+
+        <div class="level_info">
+            <p>
+                В этом примере пользователю предлагается ввести свое имя. После ввода имени и нажатия Enter программа приветствует пользователя по имени, используя функцию print().
+            </p>
+        </div>
+
+        <div id = "code2"></div>
+        <form action="#" target="_self">
+            <button class="bnt">Дальше</button>
+        </form>
 
     </main>
 
@@ -96,5 +104,32 @@
         </div>
         <img src="{% static 'img\line.svg' %}" alt="line">
     </footer>
+<script>
+const openBtn = document.getElementById('open');
+const dialog = document.getElementById('notification-dialog');
+
+openBtn.addEventListener('click', () => {
+    dialog.showModal();
+    positionDialog();
+});
+
+document.getElementById('close').addEventListener('click', () => {
+    dialog.close();
+});
+
+function positionDialog() {
+    const openRect = openBtn.getBoundingClientRect();
+    const dialogRect = dialog.getBoundingClientRect();
+
+    // Вычисляем новые координаты для позиционирования диалогового окна
+    const top = openRect.top - 300;
+    const left = openRect.left - dialogRect.width;
+
+    // Устанавливаем новые координаты для диалогового окна
+    dialog.style.top = top + 'px';
+    dialog.style.left = left + 'px';
+}
+
+    </script>
 </body>
 </html>
