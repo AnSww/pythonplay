@@ -7,9 +7,17 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../static/level.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.41.0/theme/shadowfox.min.css" />
+
+
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.18.1/full/pyodide.js"></script>
+
+
 
     <title>{% block title %}{% endblock %}</title>
 </head>
@@ -67,7 +75,32 @@
             <p>Пример использования:</p>
         </div>
 
-        <div id = "code1"></div>
+        <div id = "code1" >
+            <section class="input">
+                <div class="header_code">
+                    <button type="button"  onclick="evaluatePython()">
+                    <svg width="23" height="27" viewBox="0 0 23 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M23 13.5L0.500001 26.4904L0.500002 0.509618L23 13.5Z" fill="#463A4E"/>
+                    </svg>
+                </button>
+                    <p>Код</p>
+                </div>
+                <div>
+                <textarea id="code" name="code">
+                </textarea>
+                </div>
+            </section>
+
+            <section class="output">
+                <div class="header_code">
+                    <p>Результат</p>
+                </div>
+                <div>
+                    <textarea id="output" name="output" >
+                    </textarea>
+                </div>
+            </section>
+        </div>
 
         <div class="level_info">
             <p>
@@ -131,5 +164,14 @@ function positionDialog() {
 }
 
     </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.3/codemirror.min.js"
+        integrity="sha512-XMlgZzPyVXf1I/wbGnofk1Hfdx+zAWyZjh6c21yGo/k1zNC4Ve6xcQnTDTCHrjFGsOrVicJsBURLYktVEu/8vQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.3/mode/python/python.min.js"
+        integrity="sha512-/mavDpedrvPG/0Grj2Ughxte/fsm42ZmZWWpHz1jCbzd5ECv8CB7PomGtw0NAnhHmE/lkDFkRMupjoohbKNA1Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="{% static 'js/code_ex.js' %}"></script>
 </body>
 </html>

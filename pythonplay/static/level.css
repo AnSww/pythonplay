@@ -276,11 +276,49 @@ footer{
 }
 
 #code1{
-    margin: 0 auto;
+    margin: 0 15% 0 15%;
     width: 70%;
     height: 200px;
     background-color: #6F6481;
+    display: flex;
 }
+.header_code{
+    height: 35px;
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+    padding-left: 20px;
+}
+
+.header_code button{
+    border: none;
+    cursor: pointer;
+    background-color: #6F6481;
+}
+
+.input, .output{
+    width: 50%;
+    height: 100%;
+    border: 1px solid #000000
+
+}
+.input textarea, .output textarea{
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 0;
+    height: 165px;
+    background-color: #463A4E;
+    color: #FFFFFF;
+    font-family: monospace;
+    font-size: 18px;
+}
+.CodeMirror.cm-s-shadowfox{
+    background-color: #463A4E;
+    height: 165px;
+
+}
+
 
 #code2{
     width: 70%;
