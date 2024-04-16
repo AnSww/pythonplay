@@ -34,7 +34,12 @@
                     </div>
                     <img src="{% static 'img\person_photo.png' %}" alt="person" width="50px" style="padding-left: 10px" >
                 </div>
-                <a href="#"><img src="{% static 'img\notification.svg' %}" alt="Уведомления"></a>
+                <a href="#" id="open"><img src="{% static 'img/notification.svg' %}" alt="Уведомления"></a>
+                <dialog id="notification-dialog">
+                    <div id="head">
+                        <h6>Уведомления</h6>
+                    </div>
+                </dialog>
             </div>
         </div>
     </header>
@@ -96,5 +101,32 @@
         </div>
         <img src="{% static 'img\line.svg' %}" alt="line">
     </footer>
+<script>
+const openBtn = document.getElementById('open');
+const dialog = document.getElementById('notification-dialog');
+
+openBtn.addEventListener('click', () => {
+    dialog.showModal();
+    positionDialog();
+});
+
+document.getElementById('close').addEventListener('click', () => {
+    dialog.close();
+});
+
+function positionDialog() {
+    const openRect = openBtn.getBoundingClientRect();
+    const dialogRect = dialog.getBoundingClientRect();
+
+    // Вычисляем новые координаты для позиционирования диалогового окна
+    const top = openRect.top - 300;
+    const left = openRect.left - dialogRect.width;
+
+    // Устанавливаем новые координаты для диалогового окна
+    dialog.style.top = top + 'px';
+    dialog.style.left = left + 'px';
+}
+
+    </script>
 </body>
 </html>
