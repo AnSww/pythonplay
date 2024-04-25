@@ -199,16 +199,21 @@ footer{
     width: 173px;
     height: 44px;
     border-radius: 10px;
+    border: none;
     text-decoration: none;
     color: #FFFFFF;
-    background: #644C8B;
+    background-color: #644C8B;
     opacity: .77;
     display: flex;
 	justify-content: center;
 	align-items: center;
+	font-family: 'Montserrat';
 	font-size: 16px;
     font-weight: 500;
+    cursor: pointer;
 }
+
+
 .achievement{
     width: 313px;
     height: 130px;
@@ -274,7 +279,7 @@ footer{
 }
 
 
-/*Popup*/
+/*Popup settings*/
 
 .modal {
     position: fixed;
@@ -302,7 +307,6 @@ footer{
     box-shadow: 0px 0px 17px -7px rgba(34, 60, 80, 0.2);
     transform: scale(0);
     transition: transform .8s;
-
 }
 
 .top{
@@ -352,12 +356,15 @@ footer{
 }
 
 .setting_forms div input{
-    width: 223px;
+    width: 208px;
     height: 40px;
     border: 1px solid #B6AECF;
-    padding: 0;
     margin-right: 15px;
     margin-bottom: 15px;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 500;
+    padding-left: 15px;
 }
 
 .setting_forms div input::placeholder{
@@ -419,4 +426,52 @@ footer{
 
 .modal.open .modal__box {
     transform: scale(1);
+}
+
+/*Popup certificate*/
+
+.modal__certificate {
+    position: relative;
+    max-width: 770px;
+    border-radius: 25px;
+    z-index: 1;
+    background-color: white;
+    box-shadow: 0px 0px 17px -7px rgba(34, 60, 80, 0.2);
+    transform: scale(0);
+    transition: transform .8s;
+    padding: 55px 102px 70px 102px;
+}
+.modal.open .modal__certificate {
+    transform: scale(1);
+}
+
+.certificate_close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.certificate_close-btn svg path {
+    transition: fill .4s;
+}
+
+.certificate_close-btn:hover svg path {
+    fill: #BEB7C1;
+}
+
+.title{
+    text-align: center;
+    font-weight: 700;
+    font-size: 25px;
+    margin-bottom: 35px;
+}
+
+.text_cert{
+    text-align: justify;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
 }
