@@ -37,6 +37,44 @@ dialog h6{
     height: 500px;
     position: absolute;
     z-index: 9999; /* Убедитесь, что z-index диалога выше, чем у других элементов, чтобы он отображался поверх них */
+    border-radius: 30px;
+}
+.notification_text_none{
+    text-align: center;
+    margin-top: 150px;
+    font-size: 20px;
+}
+.notification_text_have{
+    text-align: justify;
+    font-size: 20px;
+    padding: 10px 0 0 10px;
+    flex: 1;
+}
+.notification-content {
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    background-color: rgba(226, 219, 244, 0.45);
+}
+
+.cart-image {
+    margin-left: 20px; /* Регулируйте отступ между текстом и картинкой по вашему усмотрению */
+    margin-right: 20px;
+}
+.sys-image {
+    height: 75px;
+    width: 75px;
+    margin-top: 15px;
+    margin-left: 15px;
+    border-radius: 38px;
+}
+.notification-time {
+    padding: 0 0 5px 100px; /* Регулируйте отступ между основным текстом и временем по вашему усмотрению */
+    font-size: 16px;
+    color: #3a3838;
+}
+.time{
+        background-color: rgba(226, 219, 244, 0.45);
 }
 
 .header{
