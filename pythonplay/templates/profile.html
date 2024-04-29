@@ -22,6 +22,12 @@
                     <h1>PythonPlay</h1>
                  </a>
             </div>
+            <button class="theme-mode">
+                  <svg class="icon" viewBox="0 0 24 24">
+                    <path class="sun" fill="currentColor" d="M12 2a1 1 0 0 0-1 1v2a1 1 0 0 0 2 0V3a1 1 0 0 0-1-1zm0 16a1 1 0 0 0-1 1v2a1 1 0 0 0 2 0v-2a1 1 0 0 0-1-1zm9-8h-2a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2zM5 12H3a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2zm14.95-7.05l1.41-1.41a1 1 0 0 0-1.41-1.41l-1.41 1.41a1 1 0 0 0 1.41 1.41zM6.464 17.05l-1.41-1.41a1 1 0 1 0-1.414 1.414l1.414 1.41a1 1 0 1 0 1.41-1.414zM17.05 6.464l1.41-1.41a1 1 0 0 0-1.41-1.41l-1.41 1.41a1 1 0 0 0 1.41 1.41zM7.88 16.29a1 1 0 0 0-1.41 1.41l1.41 1.41a1 1 0 0 0 1.41-1.41zm10.59-10.6l-1.41 1.41a1 1 0 1 0 1.414 1.414l1.41-1.414a1 1 0 1 0-1.414-1.41zM6.464 6.464a1 1 0 1 0-1.414-1.414l-1.414 1.414a1 1 0 1 0 1.414 1.414z"/>
+                    <path class="moon" fill="#fff" d="M19.672 16.648a8.977 8.977 0 0 0-1.12-9.125 9.005 9.005 0 0 0-9.125-1.12 7.5 7.5 0 0 1 5.332 5.332 8.996 8.996 0 0 0 5.333 5.333zm-7.333-5.333a7.5 7.5 0 0 1 3.08 3.08 8.984 8.984 0 0 0-6.833 6.833 7.5 7.5 0 0 1-3.08-3.08 9.005 9.005 0 0 0 6.833-6.833zm-4.616 2.732a7.526 7.526 0 0 1 2.292-2.292 8.986 8.986 0 0 0-2.292 2.292zm5.125 0a7.526 7.526 0 0 1-2.292 2.292 8.986 8.986 0 0 0 2.292-2.292z"/>
+                  </svg>
+            </button>
             <div class="nav">
                 <a href="{% url 'roadmap' %}" class="study">Мое обучение</a>
                 <a href="#"><img src="{% static 'img\notification.svg' %}" alt="Уведомления"></a>
@@ -37,7 +43,8 @@
                     <p>Петрова Анна</p>
                     <div>
                         <p>7 уровень</p>
-                        <img src="{% static 'img\score.svg' %}" alt="score">
+                        <img class="dark" src="{% static 'img\score.svg' %}" alt="score">
+                        <img class="light" src="{% static 'img\score_dark.svg' %}" alt="score">
                         <p> x 105</p>
                     </div>
                 </div>
@@ -128,12 +135,18 @@
             </div>
         </div>
         <div class="snake">
-            <svg width="330" height="219" viewBox="0 0 330 219" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M84.6616 126.595V126.595C74.6393 115.75 57.6763 115.22 46.9959 125.417L45.762 126.595V126.595C35.5143 135.667 19.4353 132.723 12.9404 120.676V120.676M12.9404 120.676L5.03895 97M12.9404 120.676L1.99991 132.514" stroke="#7B2997" stroke-width="4"/>
-                <path d="M330 0H171.074C115.846 0 71.0743 44.7715 71.0743 100V119C71.0743 174.228 115.846 219 171.074 219H330V0Z" fill="#B89DC1"/>
-                <ellipse class="ellipse-animation" cx="14" cy="14" rx="14" ry="14" transform="matrix(-1 0 0 1 178.88 37)" fill="#3C2B4C"/>
-                <ellipse class="ellipse-animation" cx="14" cy="14" rx="14" ry="14" transform="matrix(-1 0 0 1 180 154)" fill="#3C2B4C"/>
-            </svg>
+        <svg class="dark" id="right_snake" width="244" height="219" viewBox="0 0 244 219" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path id="yzyk" d="M84.6616 126.595V126.595C74.6393 115.75 57.6763 115.22 46.9959 125.417L45.762 126.595V126.595C35.5143 135.667 19.4353 132.723 12.9404 120.676V120.676M12.9404 120.676L5.03895 97M12.9404 120.676L1.99991 132.514" stroke="#7B2997" stroke-width="4"/>
+            <path id="telo" d="M244 0H171C115.772 0 71 44.7715 71 100V119C71 174.228 115.772 219 171 219H244V0Z" fill="#B89DC1"/>
+            <ellipse cx="14.56" cy="14" rx="14.56" ry="14" transform="matrix(-1 0 0 1 178.88 37)" fill="#3C2B4C" class="ellipse-animation"/>
+            <ellipse cx="14.56" cy="14" rx="14.56" ry="14" transform="matrix(-1 0 0 1 180 154)" fill="#3C2B4C" class="ellipse-animation"/>
+        </svg>
+        <svg class="light" id="right_snake" width="244" height="219" viewBox="0 0 244 219" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path id="yzyk" d="M84.6616 126.595V126.595C74.6393 115.75 57.6763 115.22 46.9959 125.417L45.762 126.595V126.595C35.5143 135.667 19.4353 132.723 12.9404 120.676V120.676M12.9404 120.676L5.03895 97M12.9404 120.676L1.99991 132.514" stroke="#4A1757" stroke-width="4"/>
+            <path id="telo" d="M244 0H171C115.772 0 71 44.7715 71 100V119C71 174.228 115.772 219 171 219H244V0Z" fill="#5D5274"/>
+            <ellipse cx="14.56" cy="14" rx="14.56" ry="14" transform="matrix(-1 0 0 1 178.88 37)" fill="#B89DC1" class="ellipse-animation"/>
+            <ellipse cx="14.56" cy="14" rx="14.56" ry="14" transform="matrix(-1 0 0 1 180 154)" fill="#B89DC1" class="ellipse-animation"/>
+        </svg>
         </div>
     </main>
     <footer>
@@ -157,5 +170,6 @@
         </div>
         <img src="{% static 'img\line.svg' %}" alt="line">
     </footer>
+<script src="{% static 'js/dark_mode.js' %}"></script>
 </body>
 </html>

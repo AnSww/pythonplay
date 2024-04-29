@@ -33,7 +33,7 @@ h1, h2, h3, h4, h5, h6 {
     text-decoration: none;
 }
 
-.logo a h1{
+.ppl{
     color: #4B0AB6;
     font-weight: 500;
     font-size: 20px;
@@ -120,5 +120,67 @@ h1 {
 }
 
 
+/* Dark mode */
+body {
+    background: white;
+    transition: all .3s ease;
+}
+.dark-mode {
+    color: white;
+    background: #8482A6;
+}
+.dark-mode .logo a h1 {
+    color: white;
+}
 
+.dark-mode-bnt{
+    background-color: #3F3A61;
+    border-color: #3F3A61;
+}
+.dark-mode .background{
+    background-color: #605986;
+}
 
+.theme-mode {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.icon {
+  width: 40px;
+  height: 40px;
+}
+.sun {
+  display: block;
+}
+
+.moon {
+  display: none;
+}
+
+.dark-mode .sun {
+  display: none;
+}
+
+.dark-mode .moon {
+  display: block;
+}
+
+.dark {
+  display: block;
+}
+
+.light {
+  display: none;
+}
+
+.dark-mode .dark {
+  display: none;
+}
+
+.dark-mode .light {
+  display: block;
+}
+.dark-mode footer{
+    background-color: #514C5D;
+}

@@ -475,3 +475,108 @@ footer{
     font-size: 20px;
     line-height: 30px;
 }
+
+
+/* Dark mode */
+body {
+    background: white;
+    transition: all .075s ease;
+}
+.dark-mode {
+    color: white;
+    background: #7178A1;
+}
+.dark-mode #background{
+    background-color: #5D5274;
+    color: white;
+}
+
+
+.dark-mode .logo a h1 {
+    color: white;
+}
+.dark-mode .person_about p{
+    color: white;
+    font-weight: 400;
+}
+.dark-mode-bnt{
+    background-color: #3F3A61;
+    border-color: #3F3A61;
+}
+
+.theme-mode {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.icon {
+  width: 40px;
+  height: 40px;
+}
+.sun {
+  display: block;
+}
+
+.moon {
+  display: none;
+}
+
+.dark-mode .sun {
+  display: none;
+}
+
+.dark-mode .moon {
+  display: block;
+}
+
+.dark {
+  display: block;
+}
+
+.light {
+  display: none;
+}
+
+.dark-mode .dark {
+  display: none;
+}
+
+.dark-mode .light {
+  display: block;
+}
+
+.dark-mode circle {
+    fill: #d5ccf3;
+    stroke: #3d1448;
+}
+
+.dark-mode text {
+    fill: #18071a;
+}
+
+.dark-mode .person_info{
+    background-color: #5D5274;
+}
+
+.dark-mode .certificate{
+    background: linear-gradient(180deg, #3C2A42 0%, #513E5B 52%, #655274 100%);
+}
+
+.dark-mode .achievement{
+    background: linear-gradient(180deg, #3C2A42 0%, #513E5B 52%, #655274 100%);
+}
+
+.dark-mode .levels{
+    background: linear-gradient(90deg, #3C2A42 0%, #513E5B 52%, #655274 100%);
+}
+.dark-mode .btn{
+    background-color: white;
+    color: black;
+}
+
+.dark-mode .text p{
+    color: black;
+}
+.dark-mode footer{
+    background-color: #514C5D;
+}

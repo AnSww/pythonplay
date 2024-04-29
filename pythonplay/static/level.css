@@ -185,7 +185,7 @@ footer{
 
 
 
-#backgroung{
+#background{
     height: 220px;
     background-color: #B89DC1;
     opacity: 1;
@@ -248,7 +248,7 @@ footer{
         width: 10%; /* Желаемая ширина для экранов 1670px и меньше */
         height: auto; /* Сохранение пропорций */
     }
-    #backgroung{
+    #background{
     height: 150px;
     background-color: #B89DC1;
     color: black;
@@ -363,4 +363,85 @@ footer{
     height: 700px;
     background-color: #6F6481;
     margin: 0 auto;
+}
+
+/* Dark mode */
+body {
+    background: white;
+    transition: all .075s ease;
+}
+.dark-mode {
+    color: white;
+    background: #7178A1;
+}
+.dark-mode #background{
+    background-color: #5D5274;
+    color: white;
+}
+
+
+.dark-mode .logo a h1 {
+    color: white;
+}
+.dark-mode .person_about p{
+    color: white;
+    font-weight: 400;
+}
+.dark-mode-bnt{
+    background-color: #3F3A61;
+    border-color: #3F3A61;
+}
+
+.theme-mode {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.icon {
+  width: 40px;
+  height: 40px;
+}
+.sun {
+  display: block;
+}
+
+.moon {
+  display: none;
+}
+
+.dark-mode .sun {
+  display: none;
+}
+
+.dark-mode .moon {
+  display: block;
+}
+
+.dark {
+  display: block;
+}
+
+.light {
+  display: none;
+}
+
+.dark-mode .dark {
+  display: none;
+}
+
+.dark-mode .light {
+  display: block;
+}
+
+.dark-mode circle {
+    fill: #d5ccf3;
+    stroke: #3d1448;
+}
+
+.dark-mode text {
+    fill: #18071a;
+}
+
+.dark-mode footer{
+    background-color: #514C5D;
 }

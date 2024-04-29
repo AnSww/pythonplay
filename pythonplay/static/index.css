@@ -2,7 +2,6 @@ body {
 	padding: 0;
 	margin: 0;
   	font-family: 'Montserrat', regular;
-
   	font-size: 18px;
 }
 
@@ -285,4 +284,92 @@ footer{
 .certificate_text p{
     font-size: 20px;
     font-weight: 400;
+}
+/* Dark mode */
+body {
+    background: white;
+    transition: all .075s ease;
+}
+.dark-mode {
+    color: white;
+    background: #8482A6;
+}
+.dark-mode .logo a h1 {
+    color: white;
+}
+
+.dark-mode-bnt{
+    background-color: #3F3A61;
+    border-color: #3F3A61;
+}
+
+.theme-mode {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.icon {
+  width: 40px;
+  height: 40px;
+}
+.sun {
+  display: block;
+}
+
+.moon {
+  display: none;
+}
+
+.dark-mode .sun {
+  display: none;
+}
+
+.dark-mode .moon {
+  display: block;
+}
+
+.dark {
+  display: block;
+}
+
+.light {
+  display: none;
+}
+
+.dark-mode .dark {
+  display: none;
+}
+
+.dark-mode .light {
+  display: block;
+}
+
+.dark-mode .start {
+    background-color: #605986;
+}
+.dark-mode .suit div {
+    background-color: #605986;
+    border-color: #3F3A61;
+}
+.dark-mode .review {
+    background-color: #605986;
+}
+
+.dark-mode .review p {
+    color: #ffffff;
+}
+
+.dark-mode .s3{
+    background-color: #444A6A;
+}
+
+.dark-mode .s1{
+    background-color: #605986;
+}
+.dark-mode .text_button a{
+    background: #3F3A61;
+    opacity: 1;
+}
+.dark-mode footer{
+    background-color: #514C5D;
 }
