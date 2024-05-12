@@ -258,6 +258,11 @@ footer{
     justify-content: space-evenly;
 }
 }
+@media (min-width: 1670px) {
+    #right_snake {
+        margin-top: 3%;
+    }
+}
 @keyframes scaleCircle {
     0% {
         rx: 9.1171;
@@ -311,58 +316,6 @@ footer{
     position: absolute; /* Установка абсолютного позиционирования для изображения лисы */
     bottom: -7%; /* Расположение лисы внизу относительно элемента main */
     left: 0; /* Расположение лисы справа */
-}
-
-#code1{
-    margin: 0 15% 0 15%;
-    width: 70%;
-    height: 200px;
-    background-color: #6F6481;
-    display: flex;
-}
-.header_code{
-    height: 35px;
-    display: flex;
-    align-items: center;
-    color: #FFFFFF;
-    padding-left: 20px;
-}
-
-.header_code button{
-    border: none;
-    cursor: pointer;
-    background-color: #6F6481;
-}
-
-.input, .output{
-    width: 50%;
-    height: 100%;
-    border: 1px solid #000000
-
-}
-.input textarea, .output textarea{
-    width: 100%;
-    height: 100%;
-    border: none;
-    padding: 0;
-    height: 165px;
-    background-color: #463A4E;
-    color: #FFFFFF;
-    font-family: monospace;
-    font-size: 18px;
-}
-.CodeMirror.cm-s-shadowfox{
-    background-color: #463A4E;
-    height: 165px;
-
-}
-
-
-#code2{
-    width: 70%;
-    height: 700px;
-    background-color: #6F6481;
-    margin: 0 auto;
 }
 
 /* Dark mode */
@@ -444,4 +397,101 @@ body {
 
 .dark-mode footer{
     background-color: #514C5D;
+}
+/* Editor */
+.code{
+    display: flex;
+    margin: 1px 1% 0 1%;
+}
+.exercise{
+    background-color: #282A36;
+    float: left;
+    width: 23%;
+    text-align: justify;
+    padding: 20px 40px;
+    font-size: 18px;
+    color: white;
+    height: 625px;
+    overflow-y: scroll;
+}
+#editor {
+    height: 80%;
+}
+#editorContainer{
+    position: relative;
+    height: 600px;
+    margin-left: 0.25%;
+    float: right;
+    width: 76.75%;
+}
+.runcode {
+    position: absolute; /* Добавлено */
+    top: 400px; /* Добавлено */
+    right: 0; /* Добавлено */
+    font-size: 50px;
+    background-color: #282A36;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#inputArea{
+    float: left;
+    width: 28.75%;
+    margin-top: 2.5px;
+    height: 27.5%;
+
+}
+/* Remove outline on the forms and links */
+:active, :hover, :focus {
+    outline: 0;
+    outline-offset: 0;
+}
+#input{
+    resize: none;
+    background-color: #282A36;
+    width: 100%;
+    height: 100%;
+    color: white;
+    box-shadow: none;
+    font-family: 'Montserrat', regular, serif ;
+    padding-left: 5%;
+    padding-top: 5%;
+    text-align: left;
+}
+#outputArea{
+    background-color: #282A36;
+    float: right;
+    margin-left: 0.5%;
+    margin-top: 2.5px;
+    width: 65%;
+    border: none;
+    padding: 1% 2%;
+    color: white;
+    height: 27%;
+    overflow-y: scroll;
+}
+
+.exercise ul li:nth-child(1) {
+    color: rgba(255, 107, 107, 0.75); /* Цвет для нечетных элементов списка */
+}
+
+.exercise ul li:nth-child(2) {
+    color: rgba(107, 255, 184, 0.49); /* Цвет для четных элементов списка */
+}
+.exercise ul li:nth-child(3) {
+    color: #9f89be; /* Цвет для четных элементов списка */
+}
+
+.exercise h3::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: white; /* Цвет белой линии */
+    margin: 20px 0; /* Расстояние между линией и заголовком */
+}
+.exercise::-webkit-scrollbar, #outputArea::-webkit-scrollbar{
+    width: 0; /* Ширина полосы прокрутки */
+    background-color: transparent; /* Прозрачный фон полосы прокрутки */
 }

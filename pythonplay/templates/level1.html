@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -11,17 +11,32 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../static/level.css">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.41.0/theme/shadowfox.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ace-builds@1.4.12/src/ace.css" type="text/css" media="screen" charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/ace-builds@1.4.12/src/ace.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script type="text/javascript">
+        var csrftoken = getCookie('csrftoken');
 
-
-    <script src="https://cdn.jsdelivr.net/pyodide/v0.18.1/full/pyodide.js"></script>
-
-
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    </script>
 
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
+
 <header>
         <div class="header">
             <div class="logo">
@@ -94,43 +109,81 @@
             <p>
                 <strong>Функция input()</strong> - это инструмент, который позволяет вашей программе взаимодействовать с пользователем. Когда программа доходит до строки с <strong>input()</strong>, она приостанавливает свое выполнение и <strong>ожидает</strong>, пока пользователь введет данные с клавиатуры. После этого введенная пользователем строка <strong>возвращается</strong> в качестве результата выполнения функции <strong>input()</strong>.
             </p>
-            <p>Пример использования:</p>
-        </div>
-
-        <div id = "code1" >
-            <section class="input">
-                <div class="header_code">
-                    <button type="button"  onclick="evaluatePython()">
-                    <svg width="23" height="27" viewBox="0 0 23 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M23 13.5L0.500001 26.4904L0.500002 0.509618L23 13.5Z" fill="#463A4E"/>
-                    </svg>
-                </button>
-                    <p>Код</p>
-                </div>
-                <div>
-                <textarea id="code" name="code">
-                </textarea>
-                </div>
-            </section>
-
-            <section class="output">
-                <div class="header_code">
-                    <p>Результат</p>
-                </div>
-                <div>
-                    <textarea id="output" name="output" >
-                    </textarea>
-                </div>
-            </section>
-        </div>
-
-        <div class="level_info">
             <p>
-                В этом примере пользователю предлагается ввести свое имя. После ввода имени и нажатия Enter программа приветствует пользователя по имени, используя функцию print().
+                В этом примере пользователю предлагается ввести свое имя. После ввода имени и нажатия &#9205 программа приветствует пользователя по имени, используя функцию print().
             </p>
         </div>
+<div class="code">
+<div class="exercise">
+    <div id="story">
+        <p>Лисенок Лео отмечает свой день рождения, и его друг, змейка Йора, хочет написать ему поздравление. Напишите программу на Python, которая поможет Йоре отправить личное сообщение Лео, используя функции input() и print().</p>
+        <h3>Задачи</h3>
+        <ul>
+            <li>Лео поприветствовал своего друга: “Привет, Йорик!” Выведи это сообщение на экран.</li>
+            <li>Йора поприветствовала своего друга и поздравила его. (Для этой задачи используй input() и print())</li>
+            <li>Лисенок очень благодарен Йоре, что она не забыла о его Дне Рождения. Лео сердечно поблагодарил ее. Используй изученный ранее материал, путник, и напиши код. </li>
+        </ul>
+    </div>
+</div>
 
-        <div id = "code2"></div>
+<div id="editorContainer">
+    <div id="editor"></div>
+    <button class='runcode' onclick="runCode()">&#9205;</button>
+
+        <div id="inputArea">
+            <textarea id="input"/></textarea>
+        </div>
+    <div id="outputArea">
+        <h3>Output:</h3>
+        <pre id="output"></pre>
+    </div>
+
+</div>
+    </div>
+
+
+
+
+    <script>
+        // Initialize Ace code editor
+var editor = ace.edit("editor");
+editor.setTheme("ace/theme/dracula");
+editor.getSession().setMode("ace/mode/python");
+editor.setFontSize("16px");
+
+// Function to run the code in the Ace editor
+function runCode() {
+    var code = editor.getValue();
+    var input = document.getElementById("input").value; // Get input value
+
+    // Make an AJAX request to the Django server for code execution
+    $.ajax({
+        type: "POST",
+        url: "/run_code/", // URL of your Django view
+        headers: {
+            'X-CSRFToken': csrftoken // Include CSRF token in the request header
+        },
+        data: {
+            code: code,
+            input: input, // Include input data
+            language: 'python' // Fixed to Python
+        },
+        success: function(data) {
+            if (data.result) {
+                document.getElementById("output").innerText = data.result;
+            } else {
+                document.getElementById("output").innerText = data.error;
+            }
+        },
+        error: function() {
+            document.getElementById("output").innerText = "Error communicating with the server.";
+        }
+    });
+}
+
+    </script>
+
+
         <form action="#" target="_self">
             <button class="bnt">Дальше</button>
         </form>
@@ -187,15 +240,6 @@ function positionDialog() {
 
 
     </script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.3/codemirror.min.js"
-        integrity="sha512-XMlgZzPyVXf1I/wbGnofk1Hfdx+zAWyZjh6c21yGo/k1zNC4Ve6xcQnTDTCHrjFGsOrVicJsBURLYktVEu/8vQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.3/mode/python/python.min.js"
-        integrity="sha512-/mavDpedrvPG/0Grj2Ughxte/fsm42ZmZWWpHz1jCbzd5ECv8CB7PomGtw0NAnhHmE/lkDFkRMupjoohbKNA1Q=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <script src="{% static 'js/code_ex.js' %}"></script>
 <script src="{% static 'js/dark_mode.js' %}"></script>
 </body>
 </html>
