@@ -258,11 +258,6 @@ footer{
     justify-content: space-evenly;
 }
 }
-@media (min-width: 1670px) {
-    #right_snake {
-        margin-top: 3%;
-    }
-}
 @keyframes scaleCircle {
     0% {
         rx: 9.1171;

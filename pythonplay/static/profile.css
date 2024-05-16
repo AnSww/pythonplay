@@ -348,17 +348,25 @@ footer{
     flex-direction: column;
     align-items: center;
 }
-
 .setting_forms div p{
     font-size: 20px;
     font-weight: 500;
     margin-bottom: 25px;
 }
-
+.setting_forms form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.setting_forms form div{
+    display: flex;
+    flex-wrap: wrap;
+}
 .setting_forms div input{
-    width: 208px;
+    width: 223px;
     height: 40px;
     border: 1px solid #B6AECF;
+    padding: 0;
     margin-right: 15px;
     margin-bottom: 15px;
     font-family: Montserrat;
@@ -373,6 +381,13 @@ footer{
     font-weight: 500;
     text-align: center;
 }
+.setting_forms div input::value{
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+}
+
 
 .label_img {
     width: 95px;
@@ -385,7 +400,7 @@ footer{
     font-weight: 500;
     position: absolute;
     top: 144px;
-    right: 50px;
+    right: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -405,7 +420,7 @@ footer{
 .save{
     width: 170px;
     height: 50px;
-    margin-top: 20px;
+    margin-top: 15px;
     border: none;
     border-radius: 10px;
     text-decoration: none;
@@ -419,6 +434,7 @@ footer{
 	align-items: center;
     cursor: pointer;
 }
+
 .modal.open {
     visibility: visible;
     opacity: 1;
@@ -476,6 +492,60 @@ footer{
     line-height: 30px;
 }
 
+/*Popup achievement*/
+
+.modal__achievement {
+    position: relative;
+    max-width: 850px;
+    border-radius: 25px;
+    z-index: 1;
+    background-color: white;
+    box-shadow: 0px 0px 17px -7px rgba(34, 60, 80, 0.2);
+    transform: scale(0);
+    transition: transform .8s;
+    padding: 55px 74px 70px 74px;
+}
+.modal.open .modal__achievement {
+    transform: scale(1);
+}
+
+.achievement_close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.achievement_close-btn svg path {
+    transition: fill .4s;
+}
+
+.achievement_close-btn:hover svg path {
+    fill: #BEB7C1;
+}
+
+.title{
+    text-align: center;
+    font-weight: 700;
+    font-size: 25px;
+    margin-bottom: 35px;
+}
+.achievement_block{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.achievement_item{
+    width: 360px;
+    background-color: #E6E2EA;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    padding: 40px 30px;
+    margin-bottom: 10px;
+}
 
 /* Dark mode */
 body {

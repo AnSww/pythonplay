@@ -40,3 +40,22 @@ document.getElementById("certificate-modal").addEventListener('click', event => 
     event.currentTarget.classList.remove('open');
 });
 
+//achievement
+// Открыть модальное окно
+document.getElementById("open-achievement-btn").addEventListener("click", function() {
+    document.getElementById("achievement-modal").classList.add("open")
+})
+
+// Закрыть модальное окно
+document.getElementById("close-achievement-btn").addEventListener("click", function() {
+    document.getElementById("achievement-modal").classList.remove("open")
+})
+
+// Закрыть модальное окно при клике вне его
+document.querySelector("#achievement-modal .modal__achievement").addEventListener('click', event => {
+    event._isClickWithInModal = true;
+});
+document.getElementById("achievement-modal").addEventListener('click', event => {
+    if (event._isClickWithInModal) return;
+    event.currentTarget.classList.remove('open');
+});

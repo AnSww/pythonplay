@@ -32,7 +32,7 @@ h1, h2, h3, h4, h5, h6, p, a {
 }
 
 .nav{
-    width: 300px;
+    width: 400px;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -49,6 +49,37 @@ h1, h2, h3, h4, h5, h6, p, a {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+.person{
+    display: flex;
+    margin-right: 10px;
+}
+
+.person_about{
+    width: 170px;
+    height: auto;
+    padding-left: 20px;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.person_about p{
+    float: right;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.person_about div{
+    display: flex;
+    justify-content: space-around;
+}
+
+.person_about div p{
+    color: #4B4352;
+    font-weight: 600;
+    font-size: 18px;
 }
 
 /*Footer*/

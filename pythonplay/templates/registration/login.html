@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'reg.css' %}">
-    <title>{% block title %}{% endblock %}</title>
+    <title>{% block title %}Login{% endblock %}</title>
 </head>
 <body>
 <header>
@@ -48,8 +48,8 @@
 
   <form method="post">
     {% csrf_token %}
-    <label class="form" for="{{ form.username.id_for_label }}"><input type="text" placeholder="Логин" name="username" id="{{ form.username.id_for_label }}"></label>
-    <label class="form" for="{{ form.password.id_for_label }}"><input type="password" placeholder="Пароль" name="password1" id="{{ form.password.id_for_label }}"></label>
+    <label class="form" for="{{ form.username.id_for_label }}">{{ form.username }}</label>
+    <label class="form" for="{{ form.password.id_for_label }}">{{ form.password }}</label>
     <button class="bnt" type="submit">Продолжить</button>
   </form>
 

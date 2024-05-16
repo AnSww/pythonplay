@@ -3,6 +3,7 @@
 {% load static %}
 
 {% block title %}PythonPlay{% endblock %}
+{% block css%}{% static 'index.css' %}{% endblock %}
 
 {% block content %}
 
@@ -13,7 +14,7 @@
                 <h1>Python</h1>
                 <p>Изучите основы языка в игровом формате и начните свой путь в мире IT прямо сейчас!</p>
             </div>
-            <a href="#" >Начать</a>
+            <a href="{% url 'roadmap' %}" >Начать</a>
         </div>
         <img src="{% static 'img\man_sofa.png' %}" alt="man">
     </div>

@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
@@ -11,14 +13,17 @@ class HomePageView(TemplateView):
 class LetsgoPageView(TemplateView):
     template_name = 'letsgo.html'
 
+
 class LoginPageView(TemplateView):
     template_name = 'login.html'
 
-class RoadmapPageView(TemplateView):
+
+@login_required
+def roadmapPageView(request):
     template_name = 'roadmap.html'
 
-class ProfilePageView(TemplateView):
-    template_name = 'profile.html'
+    return render(request, template_name,)
+
 
 def create_level_view(level_number):
     class_name = f"Level_{level_number}_View"
