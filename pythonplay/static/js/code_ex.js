@@ -40,8 +40,7 @@ async function input(){
 
 
 async function main() {
-    let pyodide = await loadPyodide({ indexURL: "https://cdn.jsdelivr.net/pyodide/v0.18.1/full/",
-                                      stdin: input});
+    let pyodide = await loadPyodide({ indexURL: "https://cdn.jsdelivr.net/pyodide/v0.18.1/full/"});
     // Pyodide ready
     return pyodide;
 };
