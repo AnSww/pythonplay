@@ -113,7 +113,7 @@
 
     <div id="editorContainer">
         <div id="editor"></div>
-        <button class='check' onclick="checkCode()">✅︎</button>
+        <button class='check' onclick="checkOutput()">✅︎</button>
         <button class='runcode' onclick="runCode()">&#9205;</button>
 
         <div id="inputArea">
@@ -127,42 +127,34 @@
 </div>
 
         <script src="{% static 'js/editor.js' %}"></script>
-        <script>
-function checkCode() {
-    var code = editor.getValue();
-
-    $.ajax({
-        type: "POST",
-        url: "/check_code/", // URL вашего Django представления для проверки кода
-        headers: {
-            'X-CSRFToken': csrftoken // Включаем CSRF токен в заголовок запроса
-        },
-        data: {
-            code: code,
-            language: 'python' // Фиксируем язык на Python
-        },
-        success: function(data) {
-            if (data.success) {
-                alert("Все типы данных определены правильно!");
-            } else {
-                alert("Ошибка в определении типов данных: " + data.error);
-            }
-        },
-        error: function(xhr, errmsg, err) {
-            console.log(xhr.status + ": " + xhr.responseText);
-        }
-    });
-}
-
-</script>
 
         <form action="#" target="_self">
-            <button class="bnt">Дальше</button>
+            <button class="btn" id="nextButton" style="display: none;">Дальше</button>
         </form>
 
     </main>
 
+<script>
+    // Функция для проверки вывода пользователя
+function checkOutput() {
+    var userOutput = document.getElementById("output").innerText; // Получаем вывод пользователя из элемента страницы
+
+    var currentYear = new Date().getFullYear();
+    var leoBirthYear = 2014;
+    var expectedOutput = (currentYear - leoBirthYear);
 
 
-<script src="{% static 'js/dark_mode.js' %}"></script>
+    if (userOutput.trim() === expectedOutput.toString()) {
+        alert("Ответ верный!");
+        document.getElementById("nextButton").style.display = "block";
+        document.querySelector("footer").style.marginTop = "0"; // Поднимаем футер
+    } else {
+        alert("Ответ неверный. Попробуйте еще раз." + expectedOutput);
+        document.getElementById("nextButton").style.display = "none";
+        document.querySelector("footer").style.marginTop = "100px"; // Опускаем футер
+    }
+}
+
+</script>
+
 {% endblock %}
