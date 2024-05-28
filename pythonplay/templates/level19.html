@@ -1,0 +1,131 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+{% block title %}Уровень 19{% endblock %}
+{% block css%}{% static 'level.css' %}{% endblock %}
+{% block editor %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ace-builds@1.4.12/src/ace.css" type="text/css" media="screen" charset="utf-8">
+<script src="https://cdn.jsdelivr.net/npm/ace-builds@1.4.12/src/ace.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script type="text/javascript">
+        var csrftoken = getCookie('csrftoken');
+
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    </script>
+{% endblock %}
+
+{% block content %}
+
+    <main id="main_content">
+        <div id="background">
+            <img src="{% static 'img\line2.svg' %}" alt="line">
+            <h1>Уровень 19</h1>
+            <h2>Функции. Определение функций.</h2>
+            <img src="{% static 'img\line2.svg' %}" alt="line">
+        </div>
+        <svg class="dark" id="right_snake" width="244" height="219" viewBox="0 0 244 219" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path id="yzyk" d="M84.6616 126.595V126.595C74.6393 115.75 57.6763 115.22 46.9959 125.417L45.762 126.595V126.595C35.5143 135.667 19.4353 132.723 12.9404 120.676V120.676M12.9404 120.676L5.03895 97M12.9404 120.676L1.99991 132.514" stroke="#7B2997" stroke-width="4"/>
+            <path id="telo" d="M244 0H171C115.772 0 71 44.7715 71 100V119C71 174.228 115.772 219 171 219H244V0Z" fill="#B89DC1"/>
+            <ellipse cx="14.56" cy="14" rx="14.56" ry="14" transform="matrix(-1 0 0 1 178.88 37)" fill="#3C2B4C" class="ellipse-animation"/>
+            <ellipse cx="14.56" cy="14" rx="14.56" ry="14" transform="matrix(-1 0 0 1 180 154)" fill="#3C2B4C" class="ellipse-animation"/>
+        </svg>
+        <svg class="light" id="right_snake" width="244" height="219" viewBox="0 0 244 219" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path id="yzyk" d="M84.6616 126.595V126.595C74.6393 115.75 57.6763 115.22 46.9959 125.417L45.762 126.595V126.595C35.5143 135.667 19.4353 132.723 12.9404 120.676V120.676M12.9404 120.676L5.03895 97M12.9404 120.676L1.99991 132.514" stroke="#4A1757" stroke-width="4"/>
+            <path id="telo" d="M244 0H171C115.772 0 71 44.7715 71 100V119C71 174.228 115.772 219 171 219H244V0Z" fill="#5D5274"/>
+            <ellipse cx="14.56" cy="14" rx="14.56" ry="14" transform="matrix(-1 0 0 1 178.88 37)" fill="#B89DC1" class="ellipse-animation"/>
+            <ellipse cx="14.56" cy="14" rx="14.56" ry="14" transform="matrix(-1 0 0 1 180 154)" fill="#B89DC1" class="ellipse-animation"/>
+        </svg>
+        <div class="level_info">
+    <p>Оператор <strong>def </strong>в Python используется для определения новой функции. При определении функции указывается её имя, аргументы (если они есть) и возвращаемое значение (если функция должна возвращать какое-то значение).</p>
+    <p>Пример определения функции без аргументов и возвращаемого значения:</p>
+    <p><code>def greet():<br></code>
+    <code style="margin-left: 30px;">print("Hello, world!")<br></code>
+    <code># Вызов функции<br>greet()</code></p>
+
+    <p>Пример определения функции с аргументами и возвращаемым значением:</p>
+    <p><code>def add(x, y):<br></code>
+    <code style="margin-left: 30px;">return x + y<br></code>
+    <code># Вызов функции<br>result = add(3, 5) <br>print(result)  # Выведет 8</code></p>
+</div>
+<div class="code">
+    <div class="exercise">
+        <div id="story">
+            <p></p>
+            <h3>Задачи</h3>
+            <ul>
+                <li>Создай переменную и запроси у пользователя нынешний год</li>
+                <li>Вычти из этой переменной 2014</li>
+                <li>Выведи результат операциив аа на экран</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="editorContainer">
+        <div id="editor"></div>
+        <button class='check' onclick="checkCode()">✅︎</button>
+        <button class='runcode' onclick="runCode()">&#9205;</button>
+
+        <div id="inputArea">
+            <textarea id="input"/></textarea>
+        </div>
+        <div id="outputArea">
+            <h3>Output:</h3>
+            <pre id="output"></pre>
+        </div>
+    </div>
+</div>
+
+        <script src="{% static 'js/editor.js' %}"></script>
+        <script>
+function checkCode() {
+    var code = editor.getValue();
+
+    $.ajax({
+        type: "POST",
+        url: "/check_code/", // URL вашего Django представления для проверки кода
+        headers: {
+            'X-CSRFToken': csrftoken // Включаем CSRF токен в заголовок запроса
+        },
+        data: {
+            code: code,
+            language: 'python' // Фиксируем язык на Python
+        },
+        success: function(data) {
+            if (data.success) {
+                alert("Все типы данных определены правильно!");
+            } else {
+                alert("Ошибка в определении типов данных: " + data.error);
+            }
+        },
+        error: function(xhr, errmsg, err) {
+            console.log(xhr.status + ": " + xhr.responseText);
+        }
+    });
+}
+
+</script>
+
+        <form action="#" target="_self">
+            <button class="bnt">Дальше</button>
+        </form>
+
+    </main>
+
+
+
+<script src="{% static 'js/dark_mode.js' %}"></script>
+{% endblock %}

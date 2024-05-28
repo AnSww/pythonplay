@@ -43,6 +43,9 @@ Level_0_View = create_level_view(0)
 Level_1_View = create_level_view(1)
 Level_2_View = create_level_view(2)
 Level_3_View = create_level_view(3)
+Level_18_View = create_level_view(18)
+Level_19_View = create_level_view(19)
+Level_20_View = create_level_view(20)
 
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
