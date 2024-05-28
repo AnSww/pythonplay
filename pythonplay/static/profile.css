@@ -122,6 +122,12 @@ footer{
     font-weight: 600;
     font-size: 20px;
 }
+.div_settings{
+    width: 315px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
 .settings{
     width: 230px;
@@ -136,6 +142,14 @@ footer{
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
+}
+
+.btn_logout{
+    border: none;
+    text-decoration: none;
+    color: #FFFFFF;
+    background-color: #B89DC1;
+    cursor: pointer;
 }
 
 .progress{

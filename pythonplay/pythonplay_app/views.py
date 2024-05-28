@@ -38,9 +38,11 @@ def create_level_view(level_number):
 
     return dynamic_class
 
+
 Level_0_View = create_level_view(0)
 Level_1_View = create_level_view(1)
 Level_2_View = create_level_view(2)
+Level_3_View = create_level_view(3)
 
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
