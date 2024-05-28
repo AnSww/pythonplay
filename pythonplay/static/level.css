@@ -160,6 +160,7 @@ footer{
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    margin-top: 100px;
 }
 
 .footer{
@@ -328,6 +329,26 @@ body {
     color: white;
 }
 
+#nextButton{
+    display: none;
+    margin: auto;
+    margin-top: 6%;
+    margin-bottom: 2%;
+    font-family: 'Montserrat', regular;
+    font-size: 130%;
+    color: white;
+    width: 12%;
+    padding: 1%;
+    height: auto;
+    background-color: #644C8B;
+    border-color: #644C8B;
+    border-radius: 50px;
+
+}
+#nextButton:hover {
+    background-color: white;
+    color: #4B0AB6;
+}
 
 .dark-mode .logo a h1 {
     color: white;
@@ -465,6 +486,7 @@ position: absolute; /* Добавлено */
     padding: 10px 0 0 10px;
     border: none;
     text-align: left;
+    margin-bottom: 200px;
 }
 #outputArea{
     background-color: #282A36;

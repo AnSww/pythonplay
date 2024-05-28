@@ -127,8 +127,12 @@ function runCode() {
         success: function(data) {
             if (data.result) {
                 document.getElementById("output").innerText = data.result;
+                document.getElementById("nextButton").style.display = "block";
+                document.querySelector("footer").style.marginTop = "0"; // Поднимаем футер
             } else {
                 document.getElementById("output").innerText = data.error;
+                document.getElementById("nextButton").style.display = "none";
+                document.querySelector("footer").style.marginTop = "100px"; // Опускаем футер
             }
         },
         error: function() {
@@ -139,14 +143,11 @@ function runCode() {
 
     </script>
 
-
-        <form action="#" target="_self">
-            <button class="bnt">Дальше</button>
-        </form>
+<form action="{% url 'level2' %}" target="_self">
+    <button class="btn" id="nextButton" style="display: none;">Дальше</button>
+</form>
 
     </main>
 
 
-
-<script src="{% static 'js/dark_mode.js' %}"></script>
 {% endblock %}

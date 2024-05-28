@@ -109,27 +109,36 @@ function checkCode() {
             language: 'python' // Фиксируем язык на Python
         },
         success: function(data) {
-            if (data.success) {
-                alert("Все типы данных определены правильно!");
-            } else {
-                alert("Ошибка в определении типов данных: " + data.error);
-            }
-        },
+    if (data.success) {
+        alert("Все типы данных определены правильно!");
+        document.getElementById("nextButton").style.display = "block";
+        document.querySelector("footer").style.marginTop = "0"; // Поднимаем футер
+    } else {
+        alert("Ошибка в определении типов данных: " + data.error);
+        document.getElementById("nextButton").style.display = "none";
+        document.querySelector("footer").style.marginTop = "100px"; // Опускаем футер
+    }
+},
+
         error: function(xhr, errmsg, err) {
             console.log(xhr.status + ": " + xhr.responseText);
+            document.getElementById("nextButton").style.display = "none";
         }
     });
 }
 
+
 </script>
 
-        <form action="#" target="_self">
-            <button class="bnt">Дальше</button>
-        </form>
+<form action="{% url 'level3' %}" target="_self">
+
+    <button class="btn" id="nextButton" style="display: none;">Дальше</button>
+</form>
+
+
 
     </main>
 
 
 
-<script src="{% static 'js/dark_mode.js' %}"></script>
 {% endblock %}
