@@ -38,8 +38,14 @@ def create_level_view(level_number):
 
     return dynamic_class
 
+
 Level_0_View = create_level_view(0)
 Level_1_View = create_level_view(1)
+Level_2_View = create_level_view(2)
+Level_3_View = create_level_view(3)
+Level_18_View = create_level_view(18)
+Level_19_View = create_level_view(19)
+Level_20_View = create_level_view(20)
 
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -83,3 +89,49 @@ def run_python_code(code, input_data):
         return "Error: Process timed out."
     except subprocess.CalledProcessError as e:
         return f"Error: {e}"
+
+# views.py
+import json
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+
+@csrf_exempt
+def check_code(request):
+    if request.method == 'POST':
+        code = request.POST.get('code')
+        expected_types = {
+            'int': int,
+            'float': float,
+            'bool': bool
+        }
+        result = {}  # Объявляем словарь для результата
+        success = True
+        error_message = ""
+
+        try:
+            local_variables = {}
+            exec(code, {}, local_variables)
+
+            # Проверка наличия переменных с ожидаемыми типами данных
+            type_check_results = {t: False for t in expected_types}
+            for var, val in local_variables.items():
+                for t, type_cls in expected_types.items():
+                    if isinstance(val, type_cls):
+                        type_check_results[t] = True
+
+            for t, check in type_check_results.items():
+                if not check:
+                    success = False
+                    error_message = f"Переменная типа {t} не определена."
+                    break
+
+        except Exception as e:
+            success = False
+            error_message = str(e)
+
+        result['success'] = success
+        if not success:
+            result['error'] = error_message
+        return JsonResponse(result)
+
+

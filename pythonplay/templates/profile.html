@@ -30,7 +30,6 @@
             </button>
             <div class="nav">
                 <a href="{% url 'roadmap' %}" class="study">Мое обучение</a>
-                <a href="#"><img src="{% static 'img\notification.svg' %}" alt="Уведомления"></a>
             </div>
         </div>
     </header>
@@ -48,7 +47,17 @@
                     </div>
                 </div>
             </div>
-            <button class="settings" id="open-settings-btn"><img src="{% static 'img\settings.svg' %}" alt="settings">Изменить профиль</button>
+            <div class="div_settings">
+                <button class="settings" id="open-settings-btn"><img src="{% static 'img\settings.svg' %}" alt="settings">Изменить профиль</button>
+                <form action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn_logout">
+                            <svg width="39" height="35" viewBox="0 0 39 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M28.875 8.125L26.2313 10.7687L31.0688 15.625H12V19.375H31.0688L26.2313 24.2125L28.875 26.875L38.25 17.5M4.5 4.375H19.5V0.625H4.5C2.4375 0.625 0.75 2.3125 0.75 4.375V30.625C0.75 32.6875 2.4375 34.375 4.5 34.375H19.5V30.625H4.5V4.375Z" fill="#3C2B4C"/>
+                            </svg>
+                        </button>
+                </form>
+            </div>
         </div>
 
         <div class="modal" id="settings-modal">

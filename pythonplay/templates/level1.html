@@ -1,18 +1,12 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../static/level.css">
+{% extends 'layout.html' %}
 
+{% load static %}
+
+{% block title %}Уровень 1{% endblock %}
+{% block css%}{% static 'level.css' %}{% endblock %}
+{% block editor %}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ace-builds@1.4.12/src/ace.css" type="text/css" media="screen" charset="utf-8">
-    <script src="https://cdn.jsdelivr.net/npm/ace-builds@1.4.12/src/ace.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/ace-builds@1.4.12/src/ace.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script type="text/javascript">
         var csrftoken = getCookie('csrftoken');
@@ -32,60 +26,10 @@
             return cookieValue;
         }
     </script>
+{% endblock %}
 
-    <title>{% block title %}{% endblock %}</title>
-</head>
-<body>
+{% block content %}
 
-<header>
-        <div class="header">
-            <div class="logo">
-                 <a href="{% url 'home' %}">
-                    <img src="{% static 'img\snake.png' %}" alt="PythonPlay" width="59px">
-                    <h1>PythonPlay</h1>
-                 </a>
-            </div>
-            <div class="nav">
-                <div class="person">
-                    <div class="person_about">
-                        <p>Петрова Анна</p>
-                        <div>
-                            <p>7 уровень</p>
-                            <img class="dark" src="{% static 'img\score.svg' %}" alt="score">
-                            <img class="light" src="{% static 'img\score_dark.svg' %}" alt="score">
-                            <p> x 105</p>
-                        </div>
-                    </div>
-                    <img src="{% static 'img\person_photo.png' %}" alt="person" width="50px" style="padding-left: 10px" >
-                </div>
-                <a href="#" id="open">
-                    <svg width="29" height="37" viewBox="0 0 29 37" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path class="dark" fill-rule="evenodd" clip-rule="evenodd" d="M20.0888 5.27805C20.3042 4.45548 20.7378 3.70954 21.3418 3.12234C21.9458 2.53515 22.6968 2.12948 23.5121 1.95C24.3275 1.77052 25.1755 1.82419 25.9629 2.1051C26.7503 2.38601 27.4464 2.88327 27.9748 3.54213C28.5031 4.20098 28.8431 4.99588 28.9573 5.83931C29.0715 6.68274 28.9555 7.54199 28.6221 8.32245C28.2887 9.10291 27.7508 9.77432 27.0676 10.2627C26.3844 10.7512 25.5824 11.0377 24.75 11.0907C25.1628 12.2819 25.373 13.5364 25.3716 14.8V25.9H27.1838C28.1806 25.9 28.9961 26.7325 28.9961 27.75C28.9961 28.7675 28.1806 29.6 27.1838 29.6H19.9348V31.45C19.9348 32.922 19.362 34.3336 18.3424 35.3744C17.3228 36.4153 15.94 37 14.498 37C13.0561 37 11.6733 36.4153 10.6537 35.3744C9.63407 34.3336 9.06127 32.922 9.06127 31.45V29.6H1.81225C0.815514 29.6 0 28.7675 0 27.75C0 26.7325 0.815514 25.9 1.81225 25.9H3.62451V14.8C3.62484 12.1768 4.53496 9.63834 6.19356 7.63467C7.85216 5.631 10.1521 4.29149 12.6858 3.85355V1.85C12.6858 1.35935 12.8767 0.888795 13.2166 0.541852C13.5564 0.19491 14.0174 0 14.498 0C14.9787 0 15.4396 0.19491 15.7795 0.541852C16.1194 0.888795 16.3103 1.35935 16.3103 1.85V3.85355C17.6462 4.08236 18.9279 4.56559 20.0888 5.27805ZM14.498 33.3C14.9787 33.3 15.4396 33.1051 15.7795 32.7581C16.1194 32.4112 16.3103 31.9407 16.3103 31.45V29.6H12.6858V31.45C12.6858 31.9407 12.8767 32.4112 13.2166 32.7581C13.5564 33.1051 14.0174 33.3 14.498 33.3ZM7.24902 25.9H21.7471V14.8C21.747 12.8374 20.9833 10.9552 19.6239 9.56741C18.2644 8.17964 16.4206 7.4 14.498 7.4C12.5755 7.4 10.7317 8.17964 9.3722 9.56741C8.01275 10.9552 7.24902 12.8374 7.24902 14.8V25.9Z" fill="black"/>
-                        <path class="light" fill-rule="evenodd" clip-rule="evenodd" d="M20.0888 5.27805C20.3042 4.45548 20.7378 3.70954 21.3418 3.12234C21.9458 2.53515 22.6968 2.12948 23.5121 1.95C24.3275 1.77052 25.1755 1.82419 25.9629 2.1051C26.7503 2.38601 27.4464 2.88327 27.9748 3.54213C28.5031 4.20098 28.8431 4.99588 28.9573 5.83931C29.0715 6.68274 28.9555 7.54199 28.6221 8.32245C28.2887 9.10291 27.7508 9.77432 27.0676 10.2627C26.3844 10.7512 25.5824 11.0377 24.75 11.0907C25.1628 12.2819 25.373 13.5364 25.3716 14.8V25.9H27.1838C28.1806 25.9 28.9961 26.7325 28.9961 27.75C28.9961 28.7675 28.1806 29.6 27.1838 29.6H19.9348V31.45C19.9348 32.922 19.362 34.3336 18.3424 35.3744C17.3228 36.4153 15.94 37 14.498 37C13.0561 37 11.6733 36.4153 10.6537 35.3744C9.63407 34.3336 9.06127 32.922 9.06127 31.45V29.6H1.81225C0.815514 29.6 0 28.7675 0 27.75C0 26.7325 0.815514 25.9 1.81225 25.9H3.62451V14.8C3.62484 12.1768 4.53496 9.63834 6.19356 7.63467C7.85216 5.631 10.1521 4.29149 12.6858 3.85355V1.85C12.6858 1.35935 12.8767 0.888795 13.2166 0.541852C13.5564 0.19491 14.0174 0 14.498 0C14.9787 0 15.4396 0.19491 15.7795 0.541852C16.1194 0.888795 16.3103 1.35935 16.3103 1.85V3.85355C17.6462 4.08236 18.9279 4.56559 20.0888 5.27805ZM14.498 33.3C14.9787 33.3 15.4396 33.1051 15.7795 32.7581C16.1194 32.4112 16.3103 31.9407 16.3103 31.45V29.6H12.6858V31.45C12.6858 31.9407 12.8767 32.4112 13.2166 32.7581C13.5564 33.1051 14.0174 33.3 14.498 33.3ZM7.24902 25.9H21.7471V14.8C21.747 12.8374 20.9833 10.9552 19.6239 9.56741C18.2644 8.17964 16.4206 7.4 14.498 7.4C12.5755 7.4 10.7317 8.17964 9.3722 9.56741C8.01275 10.9552 7.24902 12.8374 7.24902 14.8V25.9Z" fill="white"/>
-                    </svg>
-                </a>
-                <dialog id="notification-dialog">
-                    <div id="head">
-                        <h6>Уведомления</h6>
-                    </div>
-                    <div class="notification-content">
-                        <img src="{% static 'img\system_img.gif' %}" class="sys-image">
-                        <p class="notification_text_have">Странник, ты сделал уже <strong>0%</strong> заданий. Поднажми и всё получится!</p>
-                        <img src="{% static 'img\cart_img.svg' %}" class="cart-image">
-                    </div>
-                    <div class="time">
-                    <p class="notification-time">Вчера 12:24</p>
-                    </div>
-                </dialog>
-                <button class="theme-mode">
-                  <svg class="icon" viewBox="0 0 24 24">
-                    <path class="sun" fill="currentColor" d="M12 2a1 1 0 0 0-1 1v2a1 1 0 0 0 2 0V3a1 1 0 0 0-1-1zm0 16a1 1 0 0 0-1 1v2a1 1 0 0 0 2 0v-2a1 1 0 0 0-1-1zm9-8h-2a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2zM5 12H3a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2zm14.95-7.05l1.41-1.41a1 1 0 0 0-1.41-1.41l-1.41 1.41a1 1 0 0 0 1.41 1.41zM6.464 17.05l-1.41-1.41a1 1 0 1 0-1.414 1.414l1.414 1.41a1 1 0 1 0 1.41-1.414zM17.05 6.464l1.41-1.41a1 1 0 0 0-1.41-1.41l-1.41 1.41a1 1 0 0 0 1.41 1.41zM7.88 16.29a1 1 0 0 0-1.41 1.41l1.41 1.41a1 1 0 0 0 1.41-1.41zm10.59-10.6l-1.41 1.41a1 1 0 1 0 1.414 1.414l1.41-1.414a1 1 0 1 0-1.414-1.41zM6.464 6.464a1 1 0 1 0-1.414-1.414l-1.414 1.414a1 1 0 1 0 1.414 1.414z"/>
-                    <path class="moon" fill="#fff" d="M19.672 16.648a8.977 8.977 0 0 0-1.12-9.125 9.005 9.005 0 0 0-9.125-1.12 7.5 7.5 0 0 1 5.332 5.332 8.996 8.996 0 0 0 5.333 5.333zm-7.333-5.333a7.5 7.5 0 0 1 3.08 3.08 8.984 8.984 0 0 0-6.833 6.833 7.5 7.5 0 0 1-3.08-3.08 9.005 9.005 0 0 0 6.833-6.833zm-4.616 2.732a7.526 7.526 0 0 1 2.292-2.292 8.986 8.986 0 0 0-2.292 2.292zm5.125 0a7.526 7.526 0 0 1-2.292 2.292 8.986 8.986 0 0 0 2.292-2.292z"/>
-                  </svg>
-                </button>
-            </div>
-        </div>
-    </header>
     <main id="main_content">
         <div id="background">
             <img src="{% static 'img\line2.svg' %}" alt="line">
@@ -183,8 +127,12 @@ function runCode() {
         success: function(data) {
             if (data.result) {
                 document.getElementById("output").innerText = data.result;
+                document.getElementById("nextButton").style.display = "block";
+                document.querySelector("footer").style.marginTop = "0"; // Поднимаем футер
             } else {
                 document.getElementById("output").innerText = data.error;
+                document.getElementById("nextButton").style.display = "none";
+                document.querySelector("footer").style.marginTop = "100px"; // Опускаем футер
             }
         },
         error: function() {
@@ -195,63 +143,11 @@ function runCode() {
 
     </script>
 
-
-        <form action="#" target="_self">
-            <button class="bnt">Дальше</button>
-        </form>
+<form action="{% url 'level2' %}" target="_self">
+    <button class="btn" id="nextButton" style="display: none;">Дальше</button>
+</form>
 
     </main>
 
 
-    <footer>
-        <img src="{% static 'img\line.svg' %}" alt="line">
-        <div class="footer">
-            <div class="contact">
-                <p>ПОЧТА</p>
-                <p style="color: #FFFFFF">email@tpu.ru</p>
-            </div>
-            <div class="contact">
-                <p>СОЦ-СЕТИ</p>
-                <div class="icons">
-                    <a href="#"><img src="{% static 'img\vk.svg' %}" alt="VK" width="25px"></a>
-                    <a href="#"><img src="{% static 'img\inst.svg' %}" alt="INST" width="25px"></a>
-                </div>
-            </div>
-            <div class="contact">
-                <p>ТЕЛЕФОН</p>
-                <p style="color: #FFFFFF">0000-0000-0</p>
-            </div>
-        </div>
-        <img src="{% static 'img\line.svg' %}" alt="line">
-    </footer>
-<script>
-const openBtn = document.getElementById('open');
-const dialog = document.getElementById('notification-dialog');
-
-openBtn.addEventListener('click', () => {
-    dialog.showModal();
-    positionDialog();
-});
-
-document.getElementById('close').addEventListener('click', () => {
-    dialog.close();
-});
-
-function positionDialog() {
-    const openRect = openBtn.getBoundingClientRect();
-    const dialogRect = dialog.getBoundingClientRect();
-
-    // Вычисляем новые координаты для позиционирования диалогового окна
-    const top = openRect.top - 300;
-    const left = openRect.left - dialogRect.width;
-
-    // Устанавливаем новые координаты для диалогового окна
-    dialog.style.top = top + 'px';
-    dialog.style.left = left + 'px';
-}
-
-
-    </script>
-<script src="{% static 'js/dark_mode.js' %}"></script>
-</body>
-</html>
+{% endblock %}
