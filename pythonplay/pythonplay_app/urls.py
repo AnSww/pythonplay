@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import (HomePageView, LetsgoPageView, LoginPageView, roadmapPageView, Level_0_View, \
     Level_1_View, run_code, Level_2_View, Level_3_View, Level_18_View, Level_19_View, Level_20_View, check_code,
-                    get_completed_tasks_count)
+                    get_completed_tasks_count, complete_task, get_userid)
 
 urlpatterns = (
     path('', HomePageView.as_view(), name='home'),
@@ -18,4 +18,6 @@ urlpatterns = (
     path('run_code/', run_code, name='run_code'),
     path('check_code/', check_code, name='check_code'),
     path('api/completed-tasks-count/', get_completed_tasks_count, name='completed_tasks_count'),
+    path('get_userid/', get_userid, name='get_userid'),
+    path('complete_task/', complete_task, name='complete_task'),
 )

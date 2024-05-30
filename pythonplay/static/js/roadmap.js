@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const numPoints = 22; // Желаемое количество точек
     const spacing = length / (numPoints + 1); // Рассчитываем расстояние между точками
 
-    let n= 5;
+    let n= 20;
 
 
 

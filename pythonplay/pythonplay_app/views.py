@@ -30,8 +30,13 @@ def roadmapPageView(request):
 def get_completed_tasks_count(request):
     user = request.user
     completed_tasks_count = Taskcompletions.objects.filter(userid=user.id).count()
-    print(completed_tasks_count)
     return JsonResponse({'completed_tasks_count': completed_tasks_count})
+
+
+@login_required
+def get_userid(request):
+    user = request.user
+    return JsonResponse({'userid': user.id})
 
 
 
@@ -147,3 +152,15 @@ def check_code(request):
         return JsonResponse(result)
 
 
+@csrf_exempt
+def complete_task(request):
+    if request.method == 'POST':
+        task_id = request.POST.get('task_id')
+        user_id = request.POST.get('user_id')
+
+        # Создание записи в таблице TaskCompletions
+        Taskcompletions.objects.create(task_id=task_id, user_id=user_id)
+
+        return JsonResponse({'status': 'success'})
+
+    return JsonResponse({'status': 'error', 'message': 'Invalid request method'}, status=400)

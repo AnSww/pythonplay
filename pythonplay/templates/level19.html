@@ -96,6 +96,38 @@
 
         <script src="{% static 'js/editor.js' %}"></script>
         <script>
+function getUserId(callback) {
+    $.ajax({
+        url: '/get_userid/',
+        type: 'GET',
+        success: function(response) {
+            callback(response.userid);
+        },
+        error: function(xhr, errmsg, err) {
+            console.error(xhr.status + ": " + xhr.responseText);
+        }
+    });
+}
+
+function taskCompleted(taskId) {
+    // Показ диалогового окна об успешности
+    alert("Задание выполнено успешно!");
+
+    // Получение user_id и отправка данных на сервер
+
+    getUserId(function(userId) {
+
+        $.ajax({
+            url: '/complete_task/',
+            type: 'POST',
+            data: {
+                'task_id': taskId,
+                'user_id': userId,
+            },
+        });
+    });
+}
+
 function checkCode() {
     var code = editor.getValue();
 
@@ -112,6 +144,7 @@ function checkCode() {
         success: function(data) {
             if (data.success) {
                 alert("Все типы данных определены правильно!");
+                taskCompleted(19)
             } else {
                 alert("Ошибка в определении типов данных: " + data.error);
             }

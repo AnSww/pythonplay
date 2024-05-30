@@ -107,6 +107,38 @@ editor.setTheme("ace/theme/dracula");
 editor.getSession().setMode("ace/mode/python");
 editor.setFontSize("16px");
 
+function getUserId(callback) {
+    $.ajax({
+        url: '/get_userid/',
+        type: 'GET',
+        success: function(response) {
+            callback(response.userid);
+        },
+        error: function(xhr, errmsg, err) {
+            console.error(xhr.status + ": " + xhr.responseText);
+        }
+    });
+}
+
+function taskCompleted(taskId) {
+    // Показ диалогового окна об успешности
+    alert("Задание выполнено успешно!");
+
+    // Получение user_id и отправка данных на сервер
+
+    getUserId(function(userId) {
+
+        $.ajax({
+            url: '/complete_task/',
+            type: 'POST',
+            data: {
+                'task_id': taskId,
+                'user_id': userId,
+            },
+        });
+    });
+}
+
 // Function to run the code in the Ace editor
 function runCode() {
     var code = editor.getValue();
@@ -127,6 +159,7 @@ function runCode() {
         success: function(data) {
             if (data.result) {
                 document.getElementById("output").innerText = data.result;
+                taskCompleted(1)
                 document.getElementById("nextButton").style.display = "block";
                 document.querySelector("footer").style.marginTop = "0"; // Поднимаем футер
             } else {

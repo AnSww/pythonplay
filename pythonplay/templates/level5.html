@@ -105,6 +105,37 @@
 
 <script>
     // Функция для проверки вывода пользователя
+function getUserId(callback) {
+    $.ajax({
+        url: '/get_userid/',
+        type: 'GET',
+        success: function(response) {
+            callback(response.userid);
+        },
+        error: function(xhr, errmsg, err) {
+            console.error(xhr.status + ": " + xhr.responseText);
+        }
+    });
+}
+
+function taskCompleted(taskId) {
+    // Показ диалогового окна об успешности
+    alert("Задание выполнено успешно!");
+
+    // Получение user_id и отправка данных на сервер
+
+    getUserId(function(userId) {
+
+        $.ajax({
+            url: '/complete_task/',
+            type: 'POST',
+            data: {
+                'task_id': taskId,
+                'user_id': userId,
+            },
+        });
+    });
+}
 function checkOutput() {
     var userOutput = document.getElementById("output").innerText; // Получаем вывод пользователя из элемента страницы
 
@@ -115,6 +146,7 @@ function checkOutput() {
 
     if (userOutput.trim() === expectedOutput.toString()) {
         alert("Ответ верный!");
+        taskCompleted(5)
         document.getElementById("nextButton").style.display = "block";
         document.querySelector("footer").style.marginTop = "0"; // Поднимаем футер
     } else {

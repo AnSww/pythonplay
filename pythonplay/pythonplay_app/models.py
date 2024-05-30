@@ -29,14 +29,14 @@ class Tasks(models.Model):
 
 
 class Taskcompletions(models.Model):
-    userid = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
-    taskid = models.ForeignKey('Tasks', on_delete=models.CASCADE)
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    task = models.ForeignKey('Tasks', on_delete=models.CASCADE)
 
     class Meta:
-        unique_together = ('userid', 'taskid')
+        unique_together = ('user', 'task')
 
     def __str__(self):
-        return '%s%s' % (self.userid, self.taskid)
+        return '%s%s' % (self.user, self.task)
 
 
 class Users(models.Model):
