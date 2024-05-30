@@ -118,6 +118,8 @@ function getUserId(callback) {
     });
 }
 
+
+
 function taskCompleted(taskId) {
     // Показ диалогового окна об успешности
     alert("Задание выполнено успешно!");
@@ -131,6 +133,13 @@ function taskCompleted(taskId) {
             type: 'POST',
             data: {
                 'task_id': taskId,
+                'user_id': userId,
+            },
+        $.ajax({
+            url: '/achive_get/',
+            type: 'POST',
+            data: {
+                'achievement_id': 2,
                 'user_id': userId,
             },
         });

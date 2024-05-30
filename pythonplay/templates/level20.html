@@ -129,6 +129,13 @@ function taskCompleted(taskId) {
                 'user_id': userId,
             },
         });
+        $.ajax({
+            url: '/achive_get/',
+            type: 'POST',
+            data: {
+                'achievement_id': 5,
+                'user_id': userId,
+            },
     });
 }
 

@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from .models import Taskcompletions
+from .models import Taskcompletions, UserAchievement
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
@@ -29,9 +29,14 @@ def roadmapPageView(request):
 @login_required
 def get_completed_tasks_count(request):
     user = request.user
-    completed_tasks_count = Taskcompletions.objects.filter(userid=user.id).count()
+    completed_tasks_count = Taskcompletions.objects.filter(user_id=user.id).count()
     return JsonResponse({'completed_tasks_count': completed_tasks_count})
 
+@login_required
+def get_received_achievements(request):
+    user = request.user
+    received_achievements = UserAchievement.objects.filter(user_id=user.id).values_list('achievement_id', flat=True)
+    return JsonResponse({'received_achievements': list(received_achievements)})
 
 @login_required
 def get_userid(request):
@@ -160,6 +165,20 @@ def complete_task(request):
 
         # Создание записи в таблице TaskCompletions
         Taskcompletions.objects.create(task_id=task_id, user_id=user_id)
+
+        return JsonResponse({'status': 'success'})
+
+    return JsonResponse({'status': 'error', 'message': 'Invalid request method'}, status=400)
+
+
+@csrf_exempt
+def achive_get(request):
+    if request.method == 'POST':
+        achievement_id = request.POST.get('achievement_id')
+        user_id = request.POST.get('user_id')
+
+        # Создание записи в таблице TaskCompletions
+        UserAchievement.objects.create(achievement_id=achievement_id, user_id=user_id)
 
         return JsonResponse({'status': 'success'})
 

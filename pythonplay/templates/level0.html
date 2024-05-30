@@ -6,7 +6,27 @@
 {% block css%}{% static 'level.css' %}{% endblock %}
 
 {% block content %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ace-builds@1.4.12/src/ace.css" type="text/css" media="screen" charset="utf-8">
+<script src="https://cdn.jsdelivr.net/npm/ace-builds@1.4.12/src/ace.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script type="text/javascript">
+        var csrftoken = getCookie('csrftoken');
 
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    </script>
 
     <main id="main_content">
         <div id="background">
@@ -45,6 +65,44 @@
                     <form action="{% url 'level1' %}" target="_self">
                 <button class="bnt">Дальше</button>
             </form>
+
+        <script>
+function getUserId(callback) {
+    $.ajax({
+        url: '/get_userid/',
+        type: 'GET',
+        success: function(response) {
+            callback(response.userid);
+        },
+        error: function(xhr, errmsg, err) {
+            console.error(xhr.status + ": " + xhr.responseText);
+        }
+    });
+}
+            function taskCompleted(taskId) {
+    getUserId(function(userId) {
+
+        $.ajax({
+            url: '/complete_task/',
+            type: 'POST',
+            data: {
+                'task_id': taskId,
+                'user_id': userId,
+            },
+        });
+        $.ajax({
+            url: '/achive_get/',
+            type: 'POST',
+            data: {
+                'achievement_id': 1,
+                'user_id': userId,
+            },
+        });
+    });
+
+}
+             taskCompleted(21);
+        </script>
 
     </main>
 

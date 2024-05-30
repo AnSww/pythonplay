@@ -1,31 +1,24 @@
 from django.db import models
 from django.contrib.auth import get_user_model
-# Create your models here.
-class Achievements(models.Model):
-    achievename = models.CharField(db_column='AchieveName', primary_key=True, max_length=255)  # Field name made lowercase.
-    goal = models.CharField(max_length=255)
-    reward = models.CharField(max_length=255)
+from django.contrib.auth.models import User
+
+class Achievement(models.Model):
+    title = models.CharField(max_length=100, unique=True)
+    description = models.TextField()
 
     def __str__(self):
-        return self.achievename
+        return self.title
 
 
-class Achievementslist(models.Model):
-    userid = models.OneToOneField('Users', models.DO_NOTHING, db_column='UserID', primary_key=True)  # Field name made lowercase. The composite primary key (UserID, AchieveName) found, that is not supported. The first column is selected.
-    achievename = models.ForeignKey(Achievements, models.DO_NOTHING, db_column='AchieveName')  # Field name made lowercase.
+class UserAchievement(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    achievement = models.ForeignKey(Achievement, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return '%s%s' %(self.achievename, self.userid)
-
-
-class Tasks(models.Model):
-    taskid = models.AutoField(db_column='TaskID', primary_key=True)  # Field name made lowercase.
-    name = models.CharField(db_column='Name', max_length=255)  # Field name made lowercase.
-    description = models.TextField(db_column='Description', blank=True, null=True)  # Field name made lowercase.
-    difficulty = models.IntegerField(db_column='Difficulty')  # Field name made lowercase.
+    class Meta:
+        unique_together = ('user', 'achievement')
 
     def __str__(self):
-        return self.name
+        return f'{self.user.username} - {self.achievement.title}'
 
 
 class Taskcompletions(models.Model):
@@ -37,6 +30,21 @@ class Taskcompletions(models.Model):
 
     def __str__(self):
         return '%s%s' % (self.user, self.task)
+
+
+class Tasks(models.Model):
+    taskid = models.AutoField(db_column='TaskID', primary_key=True)  # Field name made lowercase.
+    name = models.CharField(db_column='Name', max_length=255)  # Field name made lowercase.
+    description_theory = models.TextField(db_column='description_theory', blank=True, null=True)  # Field name made lowercase.
+    description_task = models.TextField(db_column='description_task', blank=True, null=True)  # Field name made lowercase.
+    description_goals = models.TextField(db_column='description_goals', blank=True, null=True)  # Field name made lowercase.
+    difficulty = models.IntegerField(db_column='Difficulty')  # Field name made lowercase.
+
+    def __str__(self):
+        return self.name
+
+
+
 
 
 class Users(models.Model):
