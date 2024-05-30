@@ -147,6 +147,28 @@ dialog h6{
         background-color: rgba(226, 219, 244, 0.45);
 }
 
+.lock{
+    visibility: hidden;
+}
+@media (max-width: 1024px){
+    .lock{
+    visibility: visible;
+    background: #3A297C;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 100;
+}
+.lock p{
+    margin:15px;
+}
+}
 
 /*Footer*/
 footer{

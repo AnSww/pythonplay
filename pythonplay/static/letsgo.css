@@ -118,7 +118,28 @@ h1 {
     margin: 25% 20px 20px 47px;
     text-align: left; /* Align text to the left */
 }
-
+.lock{
+    visibility: hidden;
+}
+@media (max-width: 1024px){
+    .lock{
+    visibility: visible;
+    background: #3A297C;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 100;
+}
+.lock p{
+    margin:15px;
+}
+}
 
 /* Dark mode */
 body {
