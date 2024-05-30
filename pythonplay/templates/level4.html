@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block title %}Уровень 19{% endblock %}
+{% block title %}Уровень 4{% endblock %}
 {% block css%}{% static 'level.css' %}{% endblock %}
 {% block editor %}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ace-builds@1.4.12/src/ace.css" type="text/css" media="screen" charset="utf-8">
@@ -33,8 +33,8 @@
     <main id="main_content">
         <div id="background">
             <img src="{% static 'img\line2.svg' %}" alt="line">
-            <h1>Уровень 19</h1>
-            <h2>Функции. Определение функций.</h2>
+            <h1>Уровень 4</h1>
+            <h2>Условные операторы. if</h2>
             <img src="{% static 'img\line2.svg' %}" alt="line">
         </div>
         <svg class="dark" id="right_snake" width="244" height="219" viewBox="0 0 244 219" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -50,38 +50,32 @@
             <ellipse cx="14.56" cy="14" rx="14.56" ry="14" transform="matrix(-1 0 0 1 180 154)" fill="#B89DC1" class="ellipse-animation"/>
         </svg>
         <div class="level_info">
-    <p>Оператор <strong>def </strong>в Python используется для определения новой функции. При определении функции указывается её имя, аргументы (если они есть) и возвращаемое значение (если функция должна возвращать какое-то значение).</p>
-    <p>Пример определения функции без аргументов и возвращаемого значения:</p>
-    <p><code>def greet():<br></code>
-    <code style="padding-left: 30px;">print("Hello, world!")<br></code>
-    <code># Вызов функции<br></code>
-    <code>greet()<br></code>
-    </p>
 
-    <p>Пример определения функции с аргументами и возвращаемым значением:</p>
-    <p><code>def add(x, y):<br></code>
-    <code style="padding-left: 30px;">return x + y<br></code>
-    <code># Вызов функции<br></code>
-    <code>result = add(3, 5)<br></code>
-    <code>print(result)  # Выведет 8<br></code>
+    <p><strong>Управляющие конструкции </strong>— это основа любой программы, которая позволяет разработчику определённым образом управлять ходом выполнения кода.</p>
+    <p>Оператор <strong>if </strong>в Python используется для выполнения блока кода, если определенное условие истинно. Это позволяет программе принимать решения на основе значений переменных или результатов выражений.</p>
+    <p><code>x = 10<br></code>
+       <code>if x > 5:<br></code>
+        <code style="padding-left: 30px;">print("x больше 5")<br></code>
     </p>
-</div>
+        </div>
+
 <div class="code">
     <div class="exercise">
         <div id="story">
-            <p></p>
+            <p>Йорик должен придти к Лео на день рождение в 13.00, но у него есть несколько планов на этот день. Напиши программу на Python, которая выведет число во сколько Йорик будет свободен.</p>
             <h3>Задачи</h3>
             <ul>
-                <li>Создай переменную и запроси у пользователя нынешний год</li>
-                <li>Вычти из этой переменной 2014</li>
-                <li>Выведи результат операциив аа на экран</li>
+                <li>Создай переменную «task1» и запиши в нее значение 9 (Йорик проснулся в 9)</li>
+                <li>Создай переменную «task2» и запиши в нее значение 1 (Йорик умывался и кушал)</li>
+                <li>Создай переменную «task3» и запиши в нее значение 2 (Йорик пошел по магазинам выбирать подарок Лео)</li>
+                <li>Напиши программу, которая сложит все задачи Йорика, сравнит их с 13 и выведет результат сложения</li>
             </ul>
         </div>
     </div>
 
     <div id="editorContainer">
         <div id="editor"></div>
-        <button class='check' onclick="checkCode()">✅︎</button>
+        <button class='check' onclick="checkOutput()">✅︎</button>
         <button class='runcode' onclick="runCode()">&#9205;</button>
 
         <div id="inputArea">
@@ -95,42 +89,34 @@
 </div>
 
         <script src="{% static 'js/editor.js' %}"></script>
-        <script>
-function checkCode() {
-    var code = editor.getValue();
-
-    $.ajax({
-        type: "POST",
-        url: "/check_code/", // URL вашего Django представления для проверки кода
-        headers: {
-            'X-CSRFToken': csrftoken // Включаем CSRF токен в заголовок запроса
-        },
-        data: {
-            code: code,
-            language: 'python' // Фиксируем язык на Python
-        },
-        success: function(data) {
-            if (data.success) {
-                alert("Все типы данных определены правильно!");
-            } else {
-                alert("Ошибка в определении типов данных: " + data.error);
-            }
-        },
-        error: function(xhr, errmsg, err) {
-            console.log(xhr.status + ": " + xhr.responseText);
-        }
-    });
-}
-
-</script>
 
         <form action="#" target="_self">
-            <button class="bnt">Дальше</button>
+            <button class="btn" id="nextButton" style="display: none;">Дальше</button>
         </form>
 
     </main>
 
+<script>
+    // Функция для проверки вывода пользователя
+function checkOutput() {
+    var userOutput = document.getElementById("output").innerText; // Получаем вывод пользователя из элемента страницы
+
+    var currentYear = new Date().getFullYear();
+    var leoBirthYear = 2014;
+    var expectedOutput = (currentYear - leoBirthYear);
 
 
-<script src="{% static 'js/dark_mode.js' %}"></script>
+    if (userOutput.trim() === expectedOutput.toString()) {
+        alert("Ответ верный!");
+        document.getElementById("nextButton").style.display = "block";
+        document.querySelector("footer").style.marginTop = "0"; // Поднимаем футер
+    } else {
+        alert("Ответ неверный. Попробуйте еще раз." + expectedOutput);
+        document.getElementById("nextButton").style.display = "none";
+        document.querySelector("footer").style.marginTop = "100px"; // Опускаем футер
+    }
+}
+
+</script>
+
 {% endblock %}
