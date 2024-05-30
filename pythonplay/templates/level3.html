@@ -128,7 +128,7 @@
 
         <script src="{% static 'js/editor.js' %}"></script>
 
-        <form action="#" target="_self">
+        <form action="{% url 'level4' %}" target="_self">
             <button class="btn" id="nextButton" style="display: none;">Дальше</button>
         </form>
 
@@ -149,7 +149,7 @@ function checkOutput() {
         document.getElementById("nextButton").style.display = "block";
         document.querySelector("footer").style.marginTop = "0"; // Поднимаем футер
     } else {
-        alert("Ответ неверный. Попробуйте еще раз." + expectedOutput);
+        alert("Ответ неверный. Попробуйте еще раз.");
         document.getElementById("nextButton").style.display = "none";
         document.querySelector("footer").style.marginTop = "100px"; // Опускаем футер
     }

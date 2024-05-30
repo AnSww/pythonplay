@@ -2,10 +2,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const svg = document.querySelector('svg.road_vector');
     const path = svg.querySelector('path#motionPath');
     const length = path.getTotalLength(); // Получаем длину пути
-    const numPoints = 22; // Желаемое количество точек
+    const numPoints = 20; // Желаемое количество точек
     const spacing = length / (numPoints + 1); // Рассчитываем расстояние между точками
 
-    let n= 5;
+    let n= 20;
 
 
 

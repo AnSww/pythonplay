@@ -73,7 +73,7 @@
             <p>Лео решил, что в зависимости от погоды он проведет свой день рождения по-разному. Если на улице солнечно, он отправится в парк. Если идет дождь, он устроит вечеринку дома. А если на улице снег, то он пойдет кататься на санках. Напишите программу, которая поможет Лео определить, как провести день.</p>
             <h3>Задачи</h3>
             <ul>
-                <li>Программа спрашивает у пользователя, какая сейчас погода: «солнечно», «дождливо» или «снежно».</li>
+                <li>Программа спрашивает у пользователя, какая сейчас погода: «солнечно», «дождливо» или «снежно». Для хранения данных используй переменную <strong><code style="background-color: #282A36;">"weather"</code></strong></li>
                 <li>В зависимости от ответа пользователя, программа использует операторы `if`, `elif` и `else` для вывода планов Лео на день.</li>
 
             </ul>
@@ -102,27 +102,70 @@
         </form>
 
     </main>
+<script>
+var exampleCode = `#Псевдокод в помощь в решении:
+
+# Спросим у пользователя о погоде
+погода = input()
+
+# Определим планы Лео на день
+if погода == '...':
+    print("Лео ...")
+elif погода == '...':
+    print("Лео ...")
+elif погода == '...':
+    print("Лео ...")
+else:
+    print("Лео не смог определиться, как провести день.")
+            `;
+editor.setValue(exampleCode);
+</script>
 
 <script>
-    // Функция для проверки вывода пользователя
 function checkOutput() {
-    var userOutput = document.getElementById("output").innerText; // Получаем вывод пользователя из элемента страницы
+    var userCode = editor.getValue();
+    $.ajax({
+        url: '/check_lvl5/',
+        type: 'POST',
+        contentType: 'application/json',
+        headers: { "X-CSRFToken": csrftoken },
+        data: JSON.stringify({ code: userCode }),
+        success: function (response) {
+            displayResults(response.results, response.passed_all);
+        },
+        error: function (xhr, status, error) {
+            console.error('Error:', error);
+        }
+    });
+}
 
-    var currentYear = new Date().getFullYear();
-    var leoBirthYear = 2014;
-    var expectedOutput = (currentYear - leoBirthYear);
-
-
-    if (userOutput.trim() === expectedOutput.toString()) {
-        alert("Ответ верный!");
-        document.getElementById("nextButton").style.display = "block";
-        document.querySelector("footer").style.marginTop = "0"; // Поднимаем футер
+function displayResults(results, passedAll) {
+    var outputArea = document.getElementById('outputArea');
+    outputArea.innerHTML = '';
+    var header = document.createElement('h3');
+    header.textContent = 'Результаты тестирования:';
+    outputArea.appendChild(header);
+    results.forEach(function(result) {
+        var resultText = `
+            <p>
+                Вход: ${result.input.toString()} <br>
+                Ожидаемый вывод: ${result.expected_output} <br>
+                Ваш вывод: ${result.user_output} <br>
+                ${result.passed ? '✅ Тест пройден' : '❌ Тест не пройден'}
+            </p>`;
+        var div = document.createElement('div');
+        div.innerHTML = resultText;
+        outputArea.appendChild(div);
+    });
+    var nextButton = document.getElementById('nextButton');
+    if (passedAll) {
+        nextButton.style.display = 'block';
     } else {
-        alert("Ответ неверный. Попробуйте еще раз." + expectedOutput);
-        document.getElementById("nextButton").style.display = "none";
-        document.querySelector("footer").style.marginTop = "100px"; // Опускаем футер
+        nextButton.style.display = 'none';
     }
 }
+
+
 
 </script>
 

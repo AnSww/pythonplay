@@ -465,6 +465,7 @@ body {
 
 .dark-mode .start {
     background-color: #605986;
+    border: 2px solid #25223a;
 }
 .dark-mode .suit div {
     background-color: #605986;
@@ -492,3 +493,4 @@ body {
 .dark-mode footer{
     background-color: #514C5D;
 }
+

@@ -672,6 +672,16 @@ body {
     background: linear-gradient(180deg, #3C2A42 0%, #513E5B 52%, #655274 100%);
 }
 
+.dark-mode .modal__achievement{
+    color: black;
+}
+.dark-mode .modal__certificate{
+    color: black;
+}
+.dark-mode .btn_logout{
+    background-color: #5D5274;
+}
+
 .dark-mode .levels{
     background: linear-gradient(90deg, #3C2A42 0%, #513E5B 52%, #655274 100%);
 }

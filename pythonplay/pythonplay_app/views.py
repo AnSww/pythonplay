@@ -136,4 +136,34 @@ def check_code(request):
             result['error'] = error_message
         return JsonResponse(result)
 
+@csrf_exempt
+def check_lvl5(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+
+        # Входные данные для тестирования
+        test_cases = [
+            {"input": "солнечно", "expected_output": "Лео отправляется в парк."},
+            {"input": "дождливо", "expected_output": "Лео устраивает вечеринку дома."},
+            {"input": "снежно", "expected_output": "Лео идет кататься на санках."},
+            {"input": "туман", "expected_output": "Лео не смог определиться, как провести день."}
+        ]
+
+        user_code = data.get('code')
+        results = []
+
+        for test in test_cases:
+            output = run_python_code(user_code, test['input'])
+            result = {
+                "input": test['input'],
+                "expected_output": test['expected_output'],
+                "user_output": output,
+                "passed": output == test['expected_output']
+            }
+            results.append(result)
+
+        passed_all = all(result['passed'] for result in results)
+        return JsonResponse({"results": results, "passed_all": passed_all})
+
+    return JsonResponse({"error": "Invalid request method"}, status=400)
 

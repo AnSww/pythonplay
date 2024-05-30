@@ -103,31 +103,86 @@
         <script src="{% static 'js/editor.js' %}"></script>
         <script>
 function checkCode() {
-    var code = editor.getValue();
-
-    $.ajax({
-        type: "POST",
-        url: "/check_code/", // URL вашего Django представления для проверки кода
-        headers: {
-            'X-CSRFToken': csrftoken // Включаем CSRF токен в заголовок запроса
-        },
-        data: {
-            code: code,
-            language: 'python' // Фиксируем язык на Python
-        },
-        success: function(data) {
-            if (data.success) {
-                alert("Все типы данных определены правильно!");
-            } else {
-                alert("Ошибка в определении типов данных: " + data.error);
+    var userCode = editor.getValue();
+    var testCases = [
+        {
+            name: "Тест 1: Создание множеств",
+            func: function() {
+                return typeof leo_guests !== 'undefined' && typeof yorik_guests !== 'undefined';
             }
         },
-        error: function(xhr, errmsg, err) {
-            console.log(xhr.status + ": " + xhr.responseText);
+        {
+            name: "Тест 2: Добавление элементов",
+            func: function() {
+                leo_guests = set();
+                yorik_guests = set();
+                leo_guests.add("Alice");
+                leo_guests.add("Bob");
+                yorik_guests.add("Charlie");
+                yorik_guests.add("David");
+                return leo_guests.has("Alice") && leo_guests.has("Bob") && yorik_guests.has("Charlie") && yorik_guests.has("David");
+            }
+        },
+        {
+            name: "Тест 3: Удаление элемента",
+            func: function() {
+                leo_guests.remove("Alice");
+                return !leo_guests.has("Alice") && leo_guests.has("Bob");
+            }
+        },
+        {
+            name: "Тест 4: Проверка элемента",
+            func: function() {
+                return "David" in yorik_guests;
+            }
         }
-    });
+    ];
+    // Выполняем тесты
+    var allTestsPassed = true;
+    for (var i = 0; i < testCases.length; i++) {
+        var test = testCases[i];
+        try {
+            if (!test.func()) {
+                allTestsPassed = false;
+                console.error(test.name + " не пройден");
+            } else {
+                console.log(test.name + " пройден");
+            }
+        } catch (e) {
+            allTestsPassed = false;
+            console.error(test.name + " не пройден с ошибкой: " + e.message);
+        }
+    }
+    if (allTestsPassed) {
+        alert("Ответ верный!");
+    } else {
+        alert("Ответ неверный. Попробуйте еще раз.");
+    }
 }
+ var exampleCode = `leo_guests = set()
+yorik_guests = set()
 
+# Добавляем имена
+leo_guests.add("Alice")
+leo_guests.add("Bob")
+yorik_guests.add("Charlie")
+yorik_guests.add("David")
+
+# Удаляем одно имя
+leo_guests.remove("Alice")
+
+# Проверяем наличие имени
+name_check = "David" in yorik_guests
+
+# Выводим результаты
+output = []
+output.append(f"Создано множество leo_guests: {leo_guests}")
+output.append(f"Создано множество yorik_guests: {yorik_guests}")
+output.append(f"Удалено имя из leo_guests: {leo_guests}")
+output.append(f"Проверка имени в yorik_guests: {name_check}")
+print("\\n".join(output))
+            `;
+            editor.setValue(exampleCode);
 </script>
 
         <form action="#" target="_self">

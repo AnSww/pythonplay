@@ -90,33 +90,33 @@
 
         <script src="{% static 'js/editor.js' %}"></script>
 
-        <form action="#" target="_self">
+        <form action="{% url 'level5' %}" target="_self">
             <button class="btn" id="nextButton" style="display: none;">Дальше</button>
         </form>
 
     </main>
 
 <script>
-    // Функция для проверки вывода пользователя
-function checkOutput() {
-    var userOutput = document.getElementById("output").innerText; // Получаем вывод пользователя из элемента страницы
+        function checkOutput() {
+            var userOutput = document.getElementById("output").innerText; // Получаем вывод пользователя из элемента страницы
 
-    var currentYear = new Date().getFullYear();
-    var leoBirthYear = 2014;
-    var expectedOutput = (currentYear - leoBirthYear);
+            var expectedOutput = 12; // Ожидаемое значение времени, когда Йорик будет свободен
 
-
-    if (userOutput.trim() === expectedOutput.toString()) {
-        alert("Ответ верный!");
-        document.getElementById("nextButton").style.display = "block";
-        document.querySelector("footer").style.marginTop = "0"; // Поднимаем футер
-    } else {
-        alert("Ответ неверный. Попробуйте еще раз." + expectedOutput);
-        document.getElementById("nextButton").style.display = "none";
-        document.querySelector("footer").style.marginTop = "100px"; // Опускаем футер
-    }
-}
-
-</script>
+            if (userOutput.trim() === expectedOutput.toString()) {
+                alert("Ответ верный!");
+                if (expectedOutput <= 13) {
+                    alert("Йорик успеет к Лео на день рождения!");
+                } else {
+                    alert("Йорик не успеет к Лео на день рождения.");
+                }
+                document.getElementById("nextButton").style.display = "block";
+                document.querySelector("footer").style.marginTop = "0"; // Поднимаем футер
+            } else {
+                alert("Ответ неверный. Попробуйте еще раз.");
+                document.getElementById("nextButton").style.display = "none";
+                document.querySelector("footer").style.marginTop = "100px"; // Опускаем футер
+            }
+        }
+    </script>
 
 {% endblock %}

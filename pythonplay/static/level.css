@@ -160,7 +160,7 @@ footer{
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 .footer{
@@ -311,7 +311,7 @@ footer{
     margin: 0;
     padding: 0;
     position: absolute; /* Установка абсолютного позиционирования для изображения лисы */
-    bottom: -7%; /* Расположение лисы внизу относительно элемента main */
+    bottom: -8%; /* Расположение лисы внизу относительно элемента main */
     left: 0; /* Расположение лисы справа */
 }
 
