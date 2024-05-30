@@ -82,10 +82,10 @@ WSGI_APPLICATION = 'pythonplay.wsgi.application'
 DATABASES = {'default': {
     'ENGINE': 'django.db.backends.mysql',
     'NAME': 'ppl',
-    'USER': 'root',
-    'PASSWORD': '11441258',
-    'HOST': 'localhost',
-    'PORT': '3306',
+    'USER': 'host',
+    'PASSWORD': 'R%J`u(U6wJuemypy|b:$qR)@',
+    'HOST': '79.174.88.20',
+    'PORT': '17654',
     }
 }
 

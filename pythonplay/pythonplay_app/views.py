@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.views.generic import TemplateView
+from .models import Taskcompletions
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
@@ -23,6 +24,15 @@ def roadmapPageView(request):
     template_name = 'roadmap.html'
 
     return render(request, template_name,)
+
+
+@login_required
+def get_completed_tasks_count(request):
+    user = request.user
+    completed_tasks_count = Taskcompletions.objects.filter(userid=user.id).count()
+    print(completed_tasks_count)
+    return JsonResponse({'completed_tasks_count': completed_tasks_count})
+
 
 
 def create_level_view(level_number):
