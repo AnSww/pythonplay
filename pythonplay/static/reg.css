@@ -70,7 +70,7 @@ h1 {
 .lock{
     visibility: hidden;
 }
-@media (max-width: 1024px){
+@media (max-width: 1023px){
     .lock{
     visibility: visible;
     background: #3A297C;

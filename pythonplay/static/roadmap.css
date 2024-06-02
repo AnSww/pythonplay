@@ -149,7 +149,7 @@ dialog h6{
 .lock{
     visibility: hidden;
 }
-@media (max-width: 1024px){
+@media (max-width: 1023px){
     .lock{
     visibility: visible;
     background: #3A297C;
@@ -164,6 +164,7 @@ dialog h6{
     height: 100vh;
     z-index: 100;
 }
+
 .lock p{
     margin:15px;
 }
@@ -206,12 +207,10 @@ h1{
     text-align: center;
 }
 .bnt {
-    margin: auto;
-    margin-top: 2%;
-    margin-bottom: 2%;
+    margin: 2% auto;
     display: block;
     font-family: 'Montserrat', regular;
-    font-size: 130%;
+    font-size: 100%;
     color: white;
     width: 12%;
     padding: 1%;
@@ -219,7 +218,6 @@ h1{
     background-color: #644C8B;
     border-color: #644C8B;
     border-radius: 50px;
-
 }
 .bnt:hover {
     background-color: white;
